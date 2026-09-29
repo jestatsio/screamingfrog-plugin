@@ -40,8 +40,11 @@ function publicProgress(value: Awaited<ReturnType<NativeClient['status']>>) {
 function failure(error: unknown) {
   return { ...content({ error: message(error, 'Native operation failed.') }), isError: true };
 }
-export function defaultAuditStore(): AuditStore {
-  return new AuditStore(resolve(process.env.JESTATS_AUDIT_DATA_DIR || join(homedir(), '.jestats', 'screamingfrog')));
+export function defaultAuditStore(configured = process.env.JESTATS_AUDIT_DATA_DIR, userHome = homedir()): AuditStore {
+  // Claude Desktop can retain the literal default from the original MCPB manifest.
+  // Repair that exact value without expanding arbitrary user-supplied paths.
+  const useHomeDefault = !configured || configured === '${HOME}/.jestats/screamingfrog';
+  return new AuditStore(resolve(useHomeDefault ? join(userHome, '.jestats', 'screamingfrog') : configured));
 }
 function publicJob(job: Job) {
   const terminal = ['ready', 'failed', 'cancelled'].includes(job.stage);

@@ -1,6 +1,6 @@
 # Compatibility and validation status
 
-Version 0.1.0 is a provisional audit implementation. The compiled server targets Node.js 20+, licensed native MCP, macOS, and Windows. Development requires Node.js 20.19+, 22.12+, or 24+. Windows verification remains a release gate. Selected local results are recorded in the [public validation snapshot](validation-2026-09-29.json).
+Version 0.1.1 is a provisional audit implementation. The compiled server targets Node.js 20+, licensed native MCP, macOS, and Windows. Development requires Node.js 20.19+, 22.12+, or 24+. Windows verification remains a release gate. The [0.1.1 storage-fix record](validation-0.1.1.json) describes the new regression checks; the [original validation snapshot](validation-2026-09-29.json) records the 0.1.0 native observations.
 
 | Host | macOS installation/workflow | Windows installation/workflow | Package |
 | --- | --- | --- | --- |
@@ -26,7 +26,7 @@ Version 0.1.0 is a provisional audit implementation. The compiled server targets
 | Fixture/type/build checks | Local checks have passed; rerun `npm run check` for the final revision. `npm audit` reported zero vulnerabilities on 2026-09-29 |
 | Packages | Prebuilt development preview downloads and a community marketplace; `npm run package:plugins` reproduces development archives |
 | Prebuilt package checks | Four extracted runtimes expose nine tools without dependency installation; checksums/catalog paths verified; generated Claude marketplace and plugin pass strict validation |
-| Community distribution | [Installation page](https://jestatsio.github.io/screamingfrog-plugin/) and [v0.1.0-preview.1 prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1); this does not satisfy host/native release gates |
+| Community distribution | [Installation page](https://jestatsio.github.io/screamingfrog-plugin/) and [v0.1.1-preview.1 prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.1-preview.1); this does not satisfy host/native release gates |
 | Validated release / marketplace submissions | Not performed |
 
 The 100,000-URL cap also has a 128 MiB budget for each selected extraction, link-evidence store, normalized snapshot, analysis candidate/finding dataset, and report payload. Exceeding a limit fails explicitly without sampling.

@@ -1,6 +1,6 @@
 {
   "name": "@jestats/screamingfrog-audit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provisional JEStats local Screaming Frog technical SEO audits, evidence-backed priorities, and offline HTML/CSV reports.",
   "type": "module",
   "license": "MIT",

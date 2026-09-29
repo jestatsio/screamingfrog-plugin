@@ -5,6 +5,7 @@ import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
 import { acquireLock } from '../src/lock.js';
+import { VERSION } from '../src/types.js';
 import { applicationLockRoot, applicationKey, assertApplicationUnowned } from '../src/audit.js';
 import { nativePhase } from '../src/extraction.js';
 import { atomicJson } from '../src/storage.js';
@@ -50,7 +51,7 @@ function knownReadiness(progress: NativeProgress): boolean {
 /** Native calls time out within ten seconds; progress polling has an overall thirty-second deadline. */
 const boundedSession: NativeSessionFactory = async endpoint => {
   const { Client, StreamableHTTPClientTransport } = await import('@modelcontextprotocol/client');
-  const client = new Client({ name: 'jestats-native-gate', version: '0.1.0' }, { versionNegotiation: { mode: 'auto' } });
+  const client = new Client({ name: 'jestats-native-gate', version: VERSION }, { versionNegotiation: { mode: 'auto' } });
   const transport = new StreamableHTTPClientTransport(endpoint, { fetch: nativeFetch(endpoint) });
   try { await client.connect(transport, { timeout: 10_000 }); }
   catch (error) { await client.close().catch(() => undefined); throw error; }

@@ -96,7 +96,12 @@ describe('prebuilt installable plugin packages', () => {
       expect(entries[`${prefix}.claude-plugin/marketplace.json`]).toBeUndefined();
       expect(entries[`${prefix}.agents/plugins/marketplace.json`]).toBeUndefined();
       const manifest = kind === 'claude-desktop' ? 'manifest.json' : kind === 'claude-code' ? '.claude-plugin/plugin.json' : '.codex-plugin/plugin.json';
-      expect(JSON.parse(strFromU8(entries[`${prefix}${manifest}`]!)).version).toBe(metadata.version);
+      const hostManifest = JSON.parse(strFromU8(entries[`${prefix}${manifest}`]!));
+      expect(hostManifest.version).toBe(metadata.version);
+      if (kind === 'claude-desktop') {
+        expect(hostManifest.user_config.data_dir).toMatchObject({ type: 'directory', default: '', required: false });
+        expect(hostManifest.server.mcp_config.env.JESTATS_AUDIT_DATA_DIR).toBe('${user_config.data_dir}');
+      }
       const packageManifest = JSON.parse(strFromU8(entries[`${prefix}package.json`]!));
       expect(packageManifest.scripts).toBeUndefined();
       expect(packageManifest.devDependencies).toBeUndefined();

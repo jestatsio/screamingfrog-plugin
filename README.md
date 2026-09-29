@@ -13,9 +13,9 @@ A free, open-source local MCP plugin for Claude Desktop, Claude Code, and Codex.
 [![MIT license](https://img.shields.io/badge/License-MIT-39e7be?style=flat-square&labelColor=102a31)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?style=flat-square&labelColor=102a31)](package.json)
 [![Local MCP](https://img.shields.io/badge/MCP-local%20stdio-39e7be?style=flat-square&labelColor=102a31)](docs/setup.md)
-[![Provisional version](https://img.shields.io/badge/v0.1.0-provisional-f4c470?style=flat-square&labelColor=102a31)](docs/compatibility.md)
+[![Provisional version](https://img.shields.io/badge/v0.1.1-provisional-f4c470?style=flat-square&labelColor=102a31)](docs/compatibility.md)
 
-[![Download for Claude Desktop](assets/install-claude.svg)](https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.0-preview.1/jestats-screamingfrog-audit-0.1.0-preview.1.mcpb)
+[![Download for Claude Desktop](assets/install-claude.svg)](https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.1-preview.1/jestats-screamingfrog-audit-0.1.1-preview.1.mcpb)
 [![Install in Codex](assets/install-codex.svg)](https://jestatsio.github.io/screamingfrog-plugin/#codex)
 [![Install in Claude Code](assets/install-code.svg)](https://jestatsio.github.io/screamingfrog-plugin/#claude-code)
 
@@ -25,7 +25,7 @@ A free, open-source local MCP plugin for Claude Desktop, Claude Code, and Codex.
 
 </div>
 
-> **Provisional v0.1.0.** A controlled licensed macOS audit works end to end. Windows native integration, all six assistant/OS installation journeys, applied preset settings, analysis readiness, and manual offline browser interaction remain release gates. See the [compatibility matrix](docs/compatibility.md).
+> **Provisional v0.1.1.** A controlled licensed macOS audit works end to end. Windows native integration, all six assistant/OS installation journeys, applied preset settings, analysis readiness, and manual offline browser interaction remain release gates. See the [compatibility matrix](docs/compatibility.md).
 
 ## One request. A clear action plan.
 
@@ -70,7 +70,7 @@ Use the buttons above or the **[installation page](https://jestatsio.github.io/s
 
 Codex's app link opens installation details for an already registered marketplace. The [installation guide](docs/setup.md) includes the two first-time commands, supported host versions, manual alternatives, and updates. Installation and complete audit usability still need verification in each host/OS combination; see the [compatibility matrix](docs/compatibility.md).
 
-Download archives and checksums from the **[development prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1)**. This is a JEStats community distribution; official directory submissions and a validated release remain pending.
+Download archives and checksums from the **[development prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.1-preview.1)**. This is a JEStats community distribution; official directory submissions and a validated release remain pending.
 
 ### 3. Ask for an audit
 
@@ -126,11 +126,12 @@ Cancellation is recorded locally even during a disconnect. Native pause is attem
 
 ## What is verified
 
-**Local validation snapshot — September 29, 2026.** These results describe the development build; rerun checks for the revision you use.
+**Local validation snapshot — September 29, 2026.** Version 0.1.1 adds the storage-path repair and regression checks; the licensed macOS crawl observations below were recorded with 0.1.0. Rerun checks for the revision you use.
 
 | Check | Observed result |
 | :--- | :--- |
-| Typecheck, build, and fixture suite | **204 tests passed** locally, including prebuilt packaging checks |
+| Typecheck, build, and fixture suite | **216 tests passed** locally, including storage-path regression and prebuilt packaging checks |
+| Claude Desktop storage default | Blank settings and the exact legacy `${HOME}/.jestats/screamingfrog` value resolve to the Node home directory; fixture MCP starts persist and list audit jobs |
 | Licensed macOS SEO Spider 24.3 | New crawl, stable identity, pagination, reconnect, and saved-crawl reload reconciliation passed |
 | New/saved audit equivalence | **13 identical snapshot rows and 14 findings**, with matching snapshot hashes |
 | Actual stdio MCP workflow | Nine tools discovered; bounded evidence queried; HTML and both CSVs generated |
@@ -138,7 +139,7 @@ Cancellation is recorded locally even during a disconnect. Native pause is attem
 | Synthetic scale benchmark | **100,000 URLs / 2,000 findings**; 2.74 MB HTML generated in **459.3 ms** in Node.js |
 | Dependency audit | Zero reported vulnerabilities at that snapshot |
 
-The [public validation record](docs/validation-2026-09-29.json) preserves these results and the outstanding release gates.
+The [0.1.1 storage-fix record](docs/validation-0.1.1.json) preserves the new regression results; the [original validation record](docs/validation-2026-09-29.json) preserves the native observations and outstanding release gates.
 
 The benchmark measures Node generation and indexed lookups; **browser responsiveness remains unverified**. The genuine macOS preset export was accepted by native MCP, but its applied settings still need verification. A recorded configuration hash observes file bytes before launch; it does not prove that Screaming Frog applied them. Progress percentages alone do not establish analysis readiness.
 

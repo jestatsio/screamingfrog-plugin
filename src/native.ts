@@ -1,4 +1,5 @@
 import type { NativeClient, NativeCrawl, NativePage, NativeProgress, NativeSession, NativeSessionFactory, NativeTool } from './native-contract.js';
+import { VERSION } from './types.js';
 import { setTimeout as delay } from 'node:timers/promises';
 
 export const DEFAULT_NATIVE_ENDPOINT = 'http://127.0.0.1:11435/mcp';
@@ -504,7 +505,7 @@ export class ScreamingFrogNative implements NativeClient {
 // Defined through the installed, stable SDK below; transport initialization never launches the Spider.
 async function createSdkSession(endpoint: URL): Promise<NativeSession> {
   const { Client, StreamableHTTPClientTransport } = await import('@modelcontextprotocol/client');
-  const client = new Client({ name: 'jestats-screamingfrog-audit', version: '0.1.0' }, { versionNegotiation: { mode: 'auto' } });
+  const client = new Client({ name: 'jestats-screamingfrog-audit', version: VERSION }, { versionNegotiation: { mode: 'auto' } });
   const transport = new StreamableHTTPClientTransport(endpoint, { fetch: nativeFetch(endpoint) });
   try { await client.connect(transport, { timeout: 10_000 }); }
   catch (error) { await client.close().catch(() => undefined); throw error; }

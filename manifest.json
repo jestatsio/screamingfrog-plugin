@@ -2,9 +2,9 @@
   "manifest_version": "0.3",
   "name": "jestats-screamingfrog-audit",
   "display_name": "JEStats Screaming Frog Audit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Technical SEO audits, evidence-backed priorities, and interactive offline reports from local Screaming Frog crawls.",
-  "long_description": "Connects to the visible, licensed Screaming Frog SEO Spider through localhost MCP. Nine tools manage local audit jobs, immutable snapshots, findings, and HTML/CSV reports. Controlled macOS pipeline, new/saved findings equivalence, and actual MCP report generation passed. Version 0.1.0 remains provisional while analysis readiness, applied preset settings, Windows native checks, offline browser checks, and assistant-host installation journeys are verified. New crawls default to a genuine macOS 24.3 native preset, with advanced configPath or explicit current-settings overrides available.",
+  "long_description": "Connects to the visible, licensed Screaming Frog SEO Spider through localhost MCP. Nine tools manage local audit jobs, immutable snapshots, findings, and HTML/CSV reports. Controlled macOS pipeline, new/saved findings equivalence, and actual MCP report generation passed. Version 0.1.1 remains provisional while analysis readiness, applied preset settings, Windows native checks, offline browser checks, and assistant-host installation journeys are verified. New crawls default to a genuine macOS 24.3 native preset, with advanced configPath or explicit current-settings overrides available.",
   "author": { "name": "JEStats", "url": "https://github.com/jestatsio" },
   "repository": { "type": "git", "url": "https://github.com/jestatsio/screamingfrog-plugin.git" },
   "homepage": "https://github.com/jestatsio/screamingfrog-plugin",
@@ -38,9 +38,9 @@
     "data_dir": {
       "type": "directory",
       "title": "Local audit storage",
-      "description": "Directory for audit jobs, immutable snapshots, and reports.",
-      "default": "${HOME}/.jestats/screamingfrog",
-      "required": true
+      "description": "Optional directory for audit jobs, immutable snapshots, and reports. Leave blank to use .jestats/screamingfrog in your home directory.",
+      "default": "",
+      "required": false
     }
   },
   "tools": [
