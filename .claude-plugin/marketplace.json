@@ -1,0 +1,19 @@
+{
+  "name": "jestats-plugins",
+  "owner": { "name": "JEStats", "url": "https://github.com/jestatsio" },
+  "metadata": {
+    "description": "JEStats community plugins: prebuilt development previews for local Screaming Frog audits."
+  },
+  "plugins": [
+    {
+      "name": "jestats-screamingfrog-audit",
+      "version": "0.1.0",
+      "description": "Development preview: evidence-backed technical SEO audits and offline HTML/CSV reports.",
+      "source": {
+        "source": "archive",
+        "url": "https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.0-preview.1/jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-claude-code.zip",
+        "sha256": "b9c7a25d873ee7b9a09126cb253bbe26b88e9db99b2dab2f5899c74549383b43"
+      }
+    }
+  ]
+}

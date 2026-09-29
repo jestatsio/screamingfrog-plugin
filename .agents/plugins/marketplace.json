@@ -1,0 +1,22 @@
+{
+  "name": "jestats-plugins",
+  "interface": {
+    "displayName": "JEStats Plugins"
+  },
+  "plugins": [
+    {
+      "name": "jestats-screamingfrog-audit",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/jestatsio/screamingfrog-plugin.git",
+        "path": "./plugins/jestats-screamingfrog-audit",
+        "sha": "4321c5fa8dc62476b87b9afd893f2da63fc3d460"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
