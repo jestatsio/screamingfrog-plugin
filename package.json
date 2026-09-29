@@ -11,8 +11,11 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "pretest": "npm run build",
+    "test": "npm run test:unit && npm run test:packaging",
+    "test:unit": "vitest run --exclude tests/packaging.test.ts",
+    "pretest:unit": "npm run build",
+    "test:packaging": "vitest run tests/packaging.test.ts",
+    "pretest:packaging": "npm run build",
     "check": "npm run typecheck && npm test",
     "probe:native": "tsx scripts/probe-native.ts",
     "verify:native": "tsx scripts/verify-native.ts",

@@ -22,6 +22,9 @@ const pluginName = 'jestats-screamingfrog-audit';
 const pluginPrefix = `plugins/${pluginName}/`;
 const expectedTools = ['audit_status', 'connection_status', 'control_audit', 'finding_details', 'list_audits',
   'list_crawls', 'list_findings', 'render_report', 'start_audit'];
+// Archive extraction touches thousands of files; allow for Windows runner disk latency.
+const packagingTimeout = 120_000;
+const cleanupOptions = { recursive: true, force: true, maxRetries: 5, retryDelay: 100 };
 
 describe('prebuilt installable plugin packages', () => {
   let metadata: ReleaseMetadata;
@@ -41,19 +44,19 @@ describe('prebuilt installable plugin packages', () => {
     for (const file of metadata.files) {
       archives.set(file.kind, unzipSync(new Uint8Array(await readFile(join(outputDirectory, file.filename)))));
     }
-  }, 60_000);
+  }, packagingTimeout);
 
   afterAll(async () => {
     if (metadata) {
       await Promise.all([
         ...metadata.files.map(file => rm(join(outputDirectory, file.filename), { force: true })),
         rm(join(outputDirectory, metadata.checksumsFile), { force: true }),
-        rm(metadata.marketplaceDirectory, { recursive: true, force: true }),
+        rm(metadata.marketplaceDirectory, cleanupOptions),
       ]);
     }
     if (releasePath) await rm(releasePath, { force: true });
-    if (isolatedRoot) await rm(isolatedRoot, { recursive: true, force: true });
-  });
+    if (isolatedRoot) await rm(isolatedRoot, cleanupOptions);
+  }, 60_000);
 
   test('publishes four uniquely named archives with matching release metadata and checksums', async () => {
     expect(metadata.files.map(file => file.kind)).toEqual(['claude-desktop', 'claude-code', 'codex', 'marketplace']);
@@ -71,7 +74,7 @@ describe('prebuilt installable plugin packages', () => {
       expect(checksums).toContain(`${file.sha256}  ${file.filename}\n`);
     }
     expect(checksums.trim().split('\n')).toHaveLength(4);
-  });
+  }, 30_000);
 
   test('resolves both marketplace catalogs to a complete prebuilt plugin without nested catalogs', async () => {
     const marketplace = archives.get('marketplace')!;
@@ -105,7 +108,7 @@ describe('prebuilt installable plugin packages', () => {
       const unpacked = await readFile(join(metadata.marketplaceDirectory, ...name.split('/')));
       expect(createHash('sha256').update(unpacked).digest('hex')).toBe(createHash('sha256').update(bytes).digest('hex'));
     }
-  }, 20_000);
+  }, 60_000);
 
   test('starts every extracted runtime without installing dependencies or contacting a native app', async () => {
     for (const [kind, entries] of archives) {
@@ -131,5 +134,5 @@ describe('prebuilt installable plugin packages', () => {
         expect(JSON.parse(block.text).connected).toBe(false);
       } finally { await client.close(); }
     }
-  }, 30_000);
+  }, packagingTimeout);
 });
