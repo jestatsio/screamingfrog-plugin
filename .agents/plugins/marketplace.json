@@ -10,7 +10,7 @@
         "source": "git-subdir",
         "url": "https://github.com/jestatsio/screamingfrog-plugin.git",
         "path": "./plugins/jestats-screamingfrog-audit",
-        "sha": "4321c5fa8dc62476b87b9afd893f2da63fc3d460"
+        "sha": "64a34a52be07e911da63bf3ecb918efed2d70b46"
       },
       "policy": {
         "installation": "AVAILABLE",

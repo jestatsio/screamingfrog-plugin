@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
   "status": "development preview; not a validated release",
-  "pluginVersion": "0.1.0",
-  "previewTag": "v0.1.0-preview.1",
-  "sourceRevision": "9a9be4049a7cc871cb285bef113a67e6a6bfd3f7",
-  "distributionRevision": "4321c5fa8dc62476b87b9afd893f2da63fc3d460",
+  "pluginVersion": "0.1.1",
+  "previewTag": "v0.1.1-preview.1",
+  "sourceRevision": "b1a3c93bf841af7e765fd1ee1fc6e84dcce9ead3",
+  "distributionRevision": "64a34a52be07e911da63bf3ecb918efed2d70b46",
   "installationPage": "https://jestatsio.github.io/screamingfrog-plugin/",
   "marketplace": "jestats-plugins",
   "claudeDesktop": {
-    "filename": "jestats-screamingfrog-audit-0.1.0-preview.1.mcpb",
-    "sha256": "4cf2dd8582229bfc5a7412952f6d0a33d0eee2ac041f9d5d393bc7356a676ff8"
+    "filename": "jestats-screamingfrog-audit-0.1.1-preview.1.mcpb",
+    "sha256": "45ea4a28a894b76218387901379d32cede60a55132318266c4b4913e096c4505"
   },
   "claudeCode": {
-    "filename": "jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-claude-code.zip",
-    "sha256": "b9c7a25d873ee7b9a09126cb253bbe26b88e9db99b2dab2f5899c74549383b43"
+    "filename": "jestats-screamingfrog-audit-0.1.1-20260929T222357339Z-6f8736ef-claude-code.zip",
+    "sha256": "c5a69b84bffde3b3c545de234a8cded87872d31418973785ec7ca93fe5c924dd"
   },
   "codex": {
-    "filename": "jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-codex.zip",
-    "sha256": "937b55519c27aadff03e53d3633d8eaa0839cabc9af9107dee99063e4aad915b"
+    "filename": "jestats-screamingfrog-audit-0.1.1-20260929T222357339Z-6f8736ef-codex.zip",
+    "sha256": "28b6fe4ce915ec23bff20386b2ad974d419a967d48848175d850ad72d906314a"
   },
   "localMarketplace": {
-    "filename": "jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-marketplace.zip",
-    "sha256": "8f5867e3a5d7650b001a09f2144227683da754aec9449011127dfd72304b81de"
+    "filename": "jestats-screamingfrog-audit-0.1.1-20260929T222357339Z-6f8736ef-marketplace.zip",
+    "sha256": "b75feab85b7e5f39f49f9a2d9083c4fa556c90cdb9ea3467021dcfc0c7c66c29"
   },
-  "validationEvidence": "validation-2026-09-29.json",
+  "validationEvidence": "validation-0.1.1.json",
   "hostInstallationAndUsability": "pending on all six target assistant and OS combinations",
   "officialDirectorySubmissions": "not performed"
 }
