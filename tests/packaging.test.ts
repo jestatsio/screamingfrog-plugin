@@ -92,6 +92,7 @@ describe('prebuilt installable plugin packages', () => {
       const prefix = kind === 'marketplace' ? pluginPrefix : '';
       expect(Buffer.from(entries[`${prefix}presets/technical-audit-v1.seospiderconfig`]!)).toEqual(preset);
       expect(entries[`${prefix}dist/cli.js`]).toBeDefined();
+      expect(entries[`${prefix}dist/cli.js.map`]).toBeUndefined();
       expect(Object.keys(entries).some(name => name.startsWith(`${prefix}node_modules/`))).toBe(true);
       expect(entries[`${prefix}.claude-plugin/marketplace.json`]).toBeUndefined();
       expect(entries[`${prefix}.agents/plugins/marketplace.json`]).toBeUndefined();

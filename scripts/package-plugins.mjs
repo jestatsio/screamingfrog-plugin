@@ -43,6 +43,8 @@ async function collect(relativePath, entries, { excludeNodeModules = false } = {
 
 const shared = {};
 for (const item of ['dist', 'README.md', 'LICENSE', 'docs', 'presets', 'skills', 'assets', 'sample']) await collect(item, shared);
+// Keep the development bundle map in source builds, outside assistant install payloads.
+delete shared['dist/cli.js.map'];
 const presetMetadata = JSON.parse(Buffer.from(shared['presets/technical-audit-v1.metadata.json']).toString('utf8'));
 const presetBytes = shared['presets/technical-audit-v1.seospiderconfig'];
 const presetHash = createHash('sha256').update(presetBytes).digest('hex');

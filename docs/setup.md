@@ -62,7 +62,7 @@ To remove a CLI installation, use `claude plugin uninstall jestats-screamingfrog
 
 ## Build from source
 
-For development, use Node.js 20.19+, 22.12+, or 24+, run `npm ci`, then `npm run check`. Run `npm run package:plugins` to generate timestamped archives, checksums, and a complete local marketplace. Load the built source with `claude --plugin-dir "/absolute/path/to/screamingfrog-plugin"`, or add its compiled MCP server directly:
+For development, use Node.js 20.19+, 22.12+, or 24+, run `npm ci`, then `npm run check`. Run `npm run package:plugins` to generate timestamped archives, checksums, and a complete local marketplace. Source builds retain the development bundle's source map; install packages omit it. Load the built source with `claude --plugin-dir "/absolute/path/to/screamingfrog-plugin"`, or add its compiled MCP server directly:
 
 ```sh
 codex mcp add jestats-screamingfrog -- node "/absolute/path/to/screamingfrog-plugin/dist/cli.js"
