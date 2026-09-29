@@ -1,12 +1,16 @@
 {
   "schemaVersion": 1,
   "kind": "prebuilt development preview",
-  "pluginVersion": "0.1.0",
-  "previewTag": "v0.1.0-preview.1",
+  "pluginVersion": "0.1.1",
+  "previewTag": "v0.1.1-preview.1",
   "sourceRepository": "https://github.com/jestatsio/screamingfrog-plugin",
-  "sourceRevision": "9a9be4049a7cc871cb285bef113a67e6a6bfd3f7",
-  "builtAt": "2026-09-29T21:52:03.476Z",
+  "sourceRevision": "b1a3c93bf841af7e765fd1ee1fc6e84dcce9ead3",
+  "builtAt": "2026-09-29T22:23:57.339Z",
+  "marketplaceArchive": {
+    "filename": "jestats-screamingfrog-audit-0.1.1-20260929T222357339Z-6f8736ef-marketplace.zip",
+    "sha256": "b75feab85b7e5f39f49f9a2d9083c4fa556c90cdb9ea3467021dcfc0c7c66c29"
+  },
   "runtime": "Node.js 20+; prebuilt server and production dependencies included",
-  "validation": "docs/validation-2026-09-29.json in the plugin directory",
+  "validation": "docs/validation-0.1.1.json in the plugin directory",
   "releaseStatus": "provisional; licensed Windows native integration and complete assistant workflows remain release gates"
 }

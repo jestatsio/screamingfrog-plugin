@@ -1,0 +1,32 @@
+{
+  "pluginVersion": "0.1.1",
+  "recordedAt": "2026-09-29",
+  "status": "development preview; not a validated release",
+  "fix": "Avoid nested HOME interpolation in Claude Desktop storage defaults; repair the exact legacy ${HOME}/.jestats/screamingfrog setting retained by existing installations.",
+  "checks": {
+    "typecheckAndBuild": "passed locally",
+    "unitTests": {
+      "passed": 213,
+      "files": 9
+    },
+    "packagingTests": {
+      "passed": 3,
+      "files": 1
+    },
+    "storageRegressionTests": {
+      "passed": 12,
+      "file": "tests/audit-store-path.test.ts",
+      "evidence": "Unset/blank/legacy/default path resolution, custom path preservation, and in-memory MCP start_audit job persistence/listing with isolated fixture home and application directories."
+    },
+    "desktopManifest": "MCPB 2.1.2 schema validation passed; optional directory with explicit empty default; packaged manifest assertions passed.",
+    "referenceManifestInterpolation": "MCPB 2.1.2 getMcpConfigForManifest plus runtime resolution passed for absent, blank, and retained legacy data_dir settings; fixture directory only, no home writes."
+  },
+  "previousNativeObservations": "validation-2026-09-29.json; recorded with 0.1.0, not rerun as part of this storage fix",
+  "releaseGates": [
+    "Licensed Windows native integration",
+    "Complete assistant/OS installation and audit journeys",
+    "Applied preset settings and analysis readiness",
+    "Manual offline report/browser interaction"
+  ],
+  "userInstallationRetest": "pending; a fixture persistence check does not establish Claude Desktop usability"
+}

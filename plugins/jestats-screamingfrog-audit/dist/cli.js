@@ -42744,6 +42744,11 @@ function toError(value2) {
   return value2 instanceof Error ? value2 : new Error(String(value2));
 }
 
+// src/types.ts
+var MAX_URLS = 1e5;
+var MAX_DATASET_BYTES = 128 * 1024 * 1024;
+var VERSION = "0.1.1";
+
 // src/native.ts
 import { setTimeout as delay } from "node:timers/promises";
 var DEFAULT_NATIVE_ENDPOINT = "http://127.0.0.1:11435/mcp";
@@ -43257,7 +43262,7 @@ var ScreamingFrogNative = class {
 };
 async function createSdkSession(endpoint) {
   const { Client: Client2, StreamableHTTPClientTransport: StreamableHTTPClientTransport2 } = await Promise.resolve().then(() => (init_dist3(), dist_exports));
-  const client = new Client2({ name: "jestats-screamingfrog-audit", version: "0.1.0" }, { versionNegotiation: { mode: "auto" } });
+  const client = new Client2({ name: "jestats-screamingfrog-audit", version: VERSION }, { versionNegotiation: { mode: "auto" } });
   const transport = new StreamableHTTPClientTransport2(endpoint, { fetch: nativeFetch(endpoint) });
   try {
     await client.connect(transport, { timeout: 1e4 });
@@ -43284,11 +43289,6 @@ var DEFAULT_MAX_REQUEST_BODY_SIZE = 4 * 1024 * 1024;
 
 // src/server.ts
 init_v4();
-
-// src/types.ts
-var MAX_URLS = 1e5;
-var MAX_DATASET_BYTES = 128 * 1024 * 1024;
-var VERSION = "0.1.0";
 
 // src/audit.ts
 import { createHash as createHash4, randomUUID as randomUUID3 } from "node:crypto";
@@ -45064,8 +45064,9 @@ function publicProgress(value2) {
 function failure(error2) {
   return { ...content({ error: message2(error2, "Native operation failed.") }), isError: true };
 }
-function defaultAuditStore() {
-  return new AuditStore(resolve(process.env.JESTATS_AUDIT_DATA_DIR || join4(homedir(), ".jestats", "screamingfrog")));
+function defaultAuditStore(configured = process.env.JESTATS_AUDIT_DATA_DIR, userHome = homedir()) {
+  const useHomeDefault = !configured || configured === "${HOME}/.jestats/screamingfrog";
+  return new AuditStore(resolve(useHomeDefault ? join4(userHome, ".jestats", "screamingfrog") : configured));
 }
 function publicJob(job) {
   const terminal2 = ["ready", "failed", "cancelled"].includes(job.stage);

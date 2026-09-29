@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "status": "development preview; not a validated release",
+  "pluginVersion": "0.1.0",
+  "previewTag": "v0.1.0-preview.1",
+  "sourceRevision": "9a9be4049a7cc871cb285bef113a67e6a6bfd3f7",
+  "distributionRevision": "4321c5fa8dc62476b87b9afd893f2da63fc3d460",
+  "installationPage": "https://jestatsio.github.io/screamingfrog-plugin/",
+  "marketplace": "jestats-plugins",
+  "claudeDesktop": {
+    "filename": "jestats-screamingfrog-audit-0.1.0-preview.1.mcpb",
+    "sha256": "4cf2dd8582229bfc5a7412952f6d0a33d0eee2ac041f9d5d393bc7356a676ff8"
+  },
+  "claudeCode": {
+    "filename": "jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-claude-code.zip",
+    "sha256": "b9c7a25d873ee7b9a09126cb253bbe26b88e9db99b2dab2f5899c74549383b43"
+  },
+  "codex": {
+    "filename": "jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-codex.zip",
+    "sha256": "937b55519c27aadff03e53d3633d8eaa0839cabc9af9107dee99063e4aad915b"
+  },
+  "localMarketplace": {
+    "filename": "jestats-screamingfrog-audit-0.1.0-20260929T215203476Z-a3fc6804-marketplace.zip",
+    "sha256": "8f5867e3a5d7650b001a09f2144227683da754aec9449011127dfd72304b81de"
+  },
+  "validationEvidence": "validation-2026-09-29.json",
+  "hostInstallationAndUsability": "pending on all six target assistant and OS combinations",
+  "officialDirectorySubmissions": "not performed"
+}

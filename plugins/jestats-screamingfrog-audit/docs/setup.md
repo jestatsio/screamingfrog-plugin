@@ -1,14 +1,16 @@
 # Install the provisional audit plugin
 
-The same compiled `dist/cli.js` supplies the nine audit tools to all hosts. Use a local client on the same machine as the licensed Screaming Frog application. Version 0.1.0 remains provisional: Windows native checks and all six host/OS installation journeys are pending; see the [compatibility matrix](compatibility.md).
+The same compiled `dist/cli.js` supplies the nine audit tools to all hosts. Use a local client on the same machine as the licensed Screaming Frog application. Version 0.1.1 remains provisional: Windows native checks and all six host/OS installation journeys are pending; see the [compatibility matrix](compatibility.md).
 
 The **[installation page](https://jestatsio.github.io/screamingfrog-plugin/)** offers prebuilt development previews. They include the compiled server and production dependencies, so users do not need to clone the repository, run npm, or build anything. Keep the visible Screaming Frog application running in database storage mode with native MCP enabled. It normally serves `http://127.0.0.1:11435/mcp`.
 
 ## Claude Desktop
 
-**[Download for Claude Desktop](https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.0-preview.1/jestats-screamingfrog-audit-0.1.0-preview.1.mcpb)**, open the downloaded `.mcpb`, and review and confirm **Install**. Claude Desktop supplies the compatible Node.js runtime. If opening the file does not show the installer, use **Settings > Extensions > Advanced settings > Install Extension…** and select it. Restart the app if needed. This download/open/confirmation flow is described in [Anthropic's desktop extensions guide](https://www.anthropic.com/engineering/desktop-extensions).
+**[Download for Claude Desktop](https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.1-preview.1/jestats-screamingfrog-audit-0.1.1-preview.1.mcpb)**, open the downloaded `.mcpb`, and review and confirm **Install**. Claude Desktop supplies the compatible Node.js runtime. If opening the file does not show the installer, use **Settings > Extensions > Advanced settings > Install Extension…** and select it. Restart the app if needed. This download/open/confirmation flow is described in [Anthropic's desktop extensions guide](https://www.anthropic.com/engineering/desktop-extensions).
 
-The extension exposes a localhost endpoint setting and a directory for persisted audit jobs, immutable snapshots, and reports. Neither setting requires a password or licence key. Native licence activation stays in Screaming Frog. The bundle format follows the [official MCPB manifest specification](https://github.com/modelcontextprotocol/mcpb/blob/main/MANIFEST.md).
+The extension exposes a localhost endpoint setting and an optional directory for persisted audit jobs, immutable snapshots, and reports. Leave **Local audit storage** blank to use `.jestats/screamingfrog` in your home directory, or select an absolute directory. Neither setting requires a password or licence key. Native licence activation stays in Screaming Frog. The bundle format follows the [official MCPB manifest specification](https://github.com/modelcontextprotocol/mcpb/blob/main/MANIFEST.md).
+
+**Upgrading from 0.1.0:** install the updated `.mcpb` and restart Claude Desktop. Version 0.1.1 handles the exact legacy `${HOME}/.jestats/screamingfrog` default if it survives in saved extension settings. The new bundle uses a blank setting so the server chooses the home directory directly.
 
 ## Claude Code
 
@@ -27,7 +29,7 @@ claude plugin marketplace add jestatsio/screamingfrog-plugin
 claude plugin install jestats-screamingfrog-audit@jestats-plugins
 ```
 
-Restart the session after installation. See the official [one-command installation instructions](https://code.claude.com/docs/en/plugins/install#add-a-marketplace-and-install-in-one-command) and [archive source requirements](https://code.claude.com/docs/en/plugins/marketplace-reference#archive-plugin-source). For a manual/session-only alternative, download `*-claude-code.zip` from the [prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1), extract it, and run `claude --plugin-dir "/absolute/path/to/extracted-plugin"`.
+Restart the session after installation. See the official [one-command installation instructions](https://code.claude.com/docs/en/plugins/install#add-a-marketplace-and-install-in-one-command) and [archive source requirements](https://code.claude.com/docs/en/plugins/marketplace-reference#archive-plugin-source). For a manual/session-only alternative, download `*-claude-code.zip` from the [prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.1-preview.1), extract it, and run `claude --plugin-dir "/absolute/path/to/extracted-plugin"`.
 
 ## Local Codex
 
@@ -86,6 +88,8 @@ On Windows, use forward slashes (`C:/Users/you/...`) or escape backslashes in JS
 ## Connection troubleshooting
 
 Call `connection_status` before selecting a crawl. Connection refusal usually means the visible application's MCP server is stopped or the endpoint differs. A missing native tool or unrecognized result shape is a compatibility failure: retain the diagnostic output for the verification record rather than guessing a schema.
+
+If version 0.1.0 reports `mkdir '/${HOME}'`, its storage-directory placeholder reached the server without expansion. Update to 0.1.1, or set **Local audit storage** to an absolute path in the extension settings and restart Claude Desktop. Connection checks and an empty audit list do not verify that storage can be written. The upstream [nested-default interpolation issue](https://github.com/modelcontextprotocol/mcpb/issues/251) describes this failure mode.
 
 Only loopback HTTP endpoints are accepted. This server is designed for local licensed-user access. No OAuth flow or remote Screaming Frog account linking is required.
 
