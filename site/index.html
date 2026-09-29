@@ -4,20 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Install the free JEStats Screaming Frog Audit plugin for Claude Desktop, Claude Code, or local Codex. Turn crawl data into an evidence-backed SEO action plan.">
-  <meta name="theme-color" content="#0b1d25">
+  <meta name="theme-color" content="#111827">
   <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="./assets/frog-auditor.png">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Install JEStats · Screaming Frog Audit</title>
   <style>
     :root {
       color-scheme: dark;
-      --background: #0b1d25;
-      --panel: #102a31;
-      --panel-light: #16383c;
-      --text: #effbf7;
-      --muted: #b8d0d1;
-      --accent: #39e7be;
-      --border: #34585e;
+      --background: #111827;
+      --panel: #172623;
+      --panel-light: #1B4D3E;
+      --text: #FAF9F5;
+      --muted: #CDC8C0;
+      --accent: #FFAD82;
+      --border: #3D514A;
       --gold: #f4c470;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-synthesis: none;
@@ -26,7 +27,7 @@
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--background); color: var(--text); }
     a { color: var(--accent); text-underline-offset: .2em; }
-    a:hover { color: #b9ffe8; }
+    a:hover { color: #FFE6D6; }
     a:focus-visible, button:focus-visible, summary:focus-visible {
       outline: 3px solid var(--gold);
       outline-offset: 5px;
@@ -35,10 +36,10 @@
     .skip { position: absolute; left: 1rem; top: -5rem; z-index: 3; background: var(--text); color: var(--background); padding: .7rem 1rem; border-radius: .5rem; }
     .skip:focus { top: 1rem; }
     .container { max-width: 1180px; margin: auto; padding: 0 28px; }
-    header { border-bottom: 1px solid #24444b; }
+    header { border-bottom: 1px solid #33473F; }
     .nav { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 90px; }
     .brand { display: flex; align-items: center; gap: .8rem; color: var(--text); text-decoration: none; font-size: 1.25rem; font-weight: 750; letter-spacing: -.03em; }
-    .brand svg { width: 38px; height: 38px; flex: none; }
+    .brand img { width: 48px; height: 48px; object-fit: contain; flex: none; }
     .nav-links { display: flex; align-items: center; gap: 1.4rem; font-size: .875rem; }
     .nav-links a { color: var(--muted); text-decoration: none; }
     .nav-links a:hover { color: var(--text); }
@@ -46,30 +47,32 @@
       position: relative;
       overflow: hidden;
       padding: 80px 0 55px;
-      background: radial-gradient(ellipse at 75% 10%, #1f5d5547, transparent 58%);
+      background: radial-gradient(ellipse at 75% 10%, #1b4d3e55, transparent 58%);
     }
+    .hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; align-items: center; gap: 36px; }
+    .hero-mascot { width: 100%; height: auto; filter: drop-shadow(0 14px 30px #00000030); }
     .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; color: var(--muted); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .preview { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .7rem; color: var(--gold); background: #f4c47012; border: 1px solid #f4c47045; border-radius: 2rem; letter-spacing: .07em; }
     .preview::before { content: ""; width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
     h1 { max-width: 840px; margin: 1.3rem 0 1.4rem; font-size: clamp(2.7rem, 5.9vw, 4.8rem); line-height: 1.08; font-weight: 750; letter-spacing: -.055em; }
     h1 span { display: block; color: var(--accent); }
     .lede { max-width: 690px; margin: 0; color: var(--muted); font-size: 1.15rem; line-height: 1.75; }
-    .features { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; margin-top: 1.8rem; color: #d4ebe4; font-size: .86rem; }
+    .features { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; margin-top: 1.8rem; color: #EAE5DC; font-size: .86rem; }
     .features span { display: inline-flex; align-items: center; gap: .5rem; }
     .features span::before { content: "✓"; color: var(--accent); font-weight: 700; }
     .section-title { margin: 0 0 .4rem; font-size: 1.7rem; line-height: 1.3; letter-spacing: -.035em; }
     .section-intro { margin: 0; color: var(--muted); }
     .installers { padding: 10px 0 65px; }
     .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
-    .card { display: flex; flex-direction: column; padding: 28px 25px 24px; background: linear-gradient(145deg, #15343a, var(--panel)); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 12px 32px #020b1029; scroll-margin-top: 24px; }
+    .card { display: flex; flex-direction: column; padding: 28px 25px 24px; background: linear-gradient(145deg, #1B3029, var(--panel)); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 12px 32px #020b1029; scroll-margin-top: 24px; }
     .card-head { display: flex; align-items: center; gap: .8rem; }
-    .host-icon { display: grid; place-items: center; width: 45px; height: 45px; color: var(--accent); background: #39e7be10; border: 1px solid #39e7be35; border-radius: 12px; font-size: 1.35rem; font-weight: 700; }
+    .host-icon { display: grid; place-items: center; width: 45px; height: 45px; color: var(--accent); background: #FFAD8210; border: 1px solid #FFAD8235; border-radius: 12px; font-size: 1.35rem; font-weight: 700; }
     .host-icon svg { width: 25px; height: 25px; }
     h2, h3 { font-weight: 700; }
     .card h3 { margin: 0; font-size: 1.23rem; letter-spacing: -.02em; }
     .host-kind { margin: 0; color: var(--muted); font-size: .77rem; }
     .card-copy { margin: 1.2rem 0 1.1rem; color: var(--muted); font-size: .92rem; }
-    .steps { margin: 0 0 1.4rem; padding-left: 1.25rem; color: #d7ece7; font-size: .89rem; }
+    .steps { margin: 0 0 1.4rem; padding-left: 1.25rem; color: #EAE5DC; font-size: .89rem; }
     .steps li { margin-bottom: .5rem; padding-left: .15rem; }
     .steps li::marker { color: var(--accent); font-weight: 700; }
     .button {
@@ -82,7 +85,7 @@
       border: 1px solid var(--accent);
       border-radius: 9px;
       background: var(--accent);
-      color: #082c26;
+      color: #111827;
       text-decoration: none;
       font: inherit;
       font-size: .89rem;
@@ -90,9 +93,9 @@
       cursor: pointer;
       transition: background .15s ease, border-color .15s ease;
     }
-    .button:hover { color: #082c26; background: #97f5d9; border-color: #97f5d9; }
-    .button.secondary { color: var(--text); background: #39e7be0d; border-color: #527b7b; }
-    .button.secondary:hover { background: #39e7be20; border-color: var(--accent); }
+    .button:hover { color: #111827; background: #FBC9AD; border-color: #FBC9AD; }
+    .button.secondary { color: var(--text); background: #FFAD820d; border-color: #82624F; }
+    .button.secondary:hover { background: #FFAD8220; border-color: var(--accent); }
     .card-actions { display: grid; gap: .65rem; margin-top: auto; }
     .note { margin: .8rem 0 0; color: var(--muted); font-size: .78rem; }
     .command { margin: 0 0 1rem; padding: .8rem .9rem; background: #071b22; border: 1px solid #2a4b51; border-radius: 9px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .73rem; line-height: 1.7; }
@@ -102,7 +105,7 @@
     .fallback summary { cursor: pointer; color: var(--muted); }
     .fallback .command { margin-top: .75rem; font-size: .7rem; }
     .fallback p { margin-bottom: 0; }
-    .preparation { padding: 36px; background: #102a31; border: 1px solid var(--border); border-radius: 18px; }
+    .preparation { padding: 36px; background: #172623; border: 1px solid var(--border); border-radius: 18px; }
     .prep-heading { display: flex; align-items: baseline; gap: .85rem; flex-wrap: wrap; margin-bottom: .6rem; }
     .prep-heading .section-title { margin: 0; }
     .mini-label { color: var(--accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
@@ -112,19 +115,20 @@
     .inline-code { color: #d6efe8; font-size: .85em; overflow-wrap: anywhere; }
     .workflow { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 40px; padding: 65px 0; }
     .workflow p { margin: 1rem 0 0; color: var(--muted); font-size: .95rem; }
-    .prompt { margin: 0; padding: 28px; background: linear-gradient(135deg, #19483e, #102a31); border: 1px solid #39e7be4d; border-radius: 16px; }
+    .prompt { margin: 0; padding: 28px; background: linear-gradient(135deg, #19483e, #172623); border: 1px solid #FFAD824d; border-radius: 16px; }
     .prompt-label { display: block; margin-bottom: .9rem; color: #9acdc4; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
     .prompt p { margin: 0; color: var(--text); font-size: clamp(1.25rem, 2.5vw, 1.7rem); line-height: 1.45; letter-spacing: -.03em; }
     .preview-note { display: flex; gap: 1.15rem; padding: 23px 26px; background: #f4c47008; border: 1px solid #f4c47038; border-radius: 12px; margin-bottom: 55px; }
     .preview-note .status-dot { flex: none; width: 9px; height: 9px; margin-top: .5rem; background: var(--gold); border-radius: 50%; }
     .preview-note p { margin: 0; font-size: .84rem; color: var(--muted); }
     .preview-note strong { color: var(--gold); }
-    footer { border-top: 1px solid #24444b; }
+    footer { border-top: 1px solid #33473F; }
     .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 28px 0; font-size: .78rem; color: var(--muted); }
     .footer-content p { margin: 0; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
     .footer-links a { color: var(--muted); }
     @media (max-width: 950px) {
+      .hero-layout { grid-template-columns: minmax(0, 1fr) 180px; gap: 25px; }
       .cards { grid-template-columns: 1fr; }
       .card { display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; }
       .card-head, .card-copy, .steps { grid-column: 1; }
@@ -134,6 +138,8 @@
       .workflow { gap: 25px; }
     }
     @media (max-width: 620px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 28px; }
+      .hero-mascot { width: 150px; justify-self: center; }
       .container { padding: 0 20px; }
       .nav { min-height: 76px; }
       .nav-links { gap: 1rem; font-size: .78rem; }
@@ -155,7 +161,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="https://github.com/jestatsio/screamingfrog-plugin" aria-label="JEStats Screaming Frog Audit on GitHub">
-        <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false"><rect width="42" height="42" rx="11" fill="#183d40" stroke="#39e7be" stroke-opacity=".5"/><path d="M10 29V22H15V29ZM19 29V16H24V29ZM28 29V10H33V29Z" fill="#39e7be"/><path d="M10 34H33" stroke="#effbf7" stroke-width="2" stroke-linecap="round"/></svg>
+        <img src="./assets/frog-auditor.png" width="48" height="48" alt="">
         JEStats
       </a>
       <nav class="nav-links" aria-label="Main navigation">
@@ -167,11 +173,14 @@
   </header>
   <main>
     <section class="hero" aria-labelledby="page-title">
-      <div class="container">
+      <div class="container hero-layout">
+        <div>
         <div class="eyebrow"><span class="preview">Development preview</span><span>Free · Open source · Local MCP</span></div>
         <h1 id="page-title">Your next crawl.<span>A clearer action plan.</span></h1>
         <p class="lede">Bring Screaming Frog to Claude or Codex. JEStats groups related problems into shared fixes, explains the priorities, and creates an evidence-backed report you can share with a client.</p>
         <div class="features" aria-label="Plugin benefits"><span>Offline HTML + CSV reports</span><span>Transparent priorities</span><span>Local crawl storage</span></div>
+        </div>
+        <img class="hero-mascot" src="./assets/frog-auditor.png" width="1254" height="1254" alt="JEStats frog auditor with a magnifying glass and audit clipboard.">
       </div>
     </section>
     <section class="container installers" id="install" aria-labelledby="install-title">
@@ -190,8 +199,8 @@
             <li>Review the settings and click <strong>Install</strong>.</li>
           </ol>
           <div class="card-actions">
-            <a class="button" href="https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.1-preview.1/jestats-screamingfrog-audit-0.1.1-preview.1.mcpb">Download for Claude Desktop <span aria-hidden="true">↓</span></a>
-            <p class="note">v0.1.1-preview.1 · macOS + Windows target<br>Claude Desktop provides the Node.js runtime.</p>
+            <a class="button" href="https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.2-preview.1/jestats-screamingfrog-audit-0.1.2-preview.1.mcpb">Download for Claude Desktop <span aria-hidden="true">↓</span></a>
+            <p class="note">v0.1.2-preview.1 · macOS + Windows target<br>Claude Desktop provides the Node.js runtime.</p>
             <details class="fallback">
               <summary>If double-click does not open the installer</summary>
               <p>In Claude Desktop, choose <strong>Settings → Extensions → Advanced settings → Install Extension…</strong> and select the downloaded file. <a href="https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop">Official installation guide ↗</a></p>
@@ -279,7 +288,7 @@ claude plugin install jestats-screamingfrog-audit@jestats-plugins</code></pre>
   <footer>
     <div class="container footer-content">
       <p>JEStats · Free and open source under MIT.<br>An independent plugin for Screaming Frog SEO Spider.</p>
-      <nav class="footer-links" aria-label="Project links"><a href="https://github.com/jestatsio/screamingfrog-plugin">Source</a><a href="https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.1-preview.1">Preview downloads</a><a href="https://github.com/jestatsio/screamingfrog-plugin/issues">Get help</a></nav>
+      <nav class="footer-links" aria-label="Project links"><a href="https://github.com/jestatsio/screamingfrog-plugin">Source</a><a href="https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.2-preview.1">Preview downloads</a><a href="https://github.com/jestatsio/screamingfrog-plugin/issues">Get help</a></nav>
     </div>
   </footer>
   <script>

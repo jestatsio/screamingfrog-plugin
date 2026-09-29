@@ -1,7 +1,7 @@
 {
   "name": "jestats-screamingfrog-audit",
   "displayName": "JEStats Screaming Frog Audit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Provisional local technical SEO auditing, evidence-backed action plans, and offline HTML/CSV reports from Screaming Frog crawls.",
   "author": { "name": "JEStats", "url": "https://github.com/jestatsio" },
   "homepage": "https://github.com/jestatsio/screamingfrog-plugin",

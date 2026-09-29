@@ -115,6 +115,37 @@ describe('prebuilt installable plugin packages', () => {
     }
   }, 60_000);
 
+  test('ships the original square PNG through supported host icon references', async () => {
+    const iconPath = 'assets/frog-auditor.png';
+    const original = await readFile(join(root, iconPath));
+    expect(original.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
+    expect(original.subarray(12, 16).toString('ascii')).toBe('IHDR');
+    const width = original.readUInt32BE(16);
+    expect(width).toBe(original.readUInt32BE(20));
+    expect(width).toBeGreaterThanOrEqual(48);
+    expect(width).toBeLessThanOrEqual(4096);
+    expect(original.length).toBeLessThan(5 * 1024 * 1024);
+    expect(original[25]).toBe(6); // RGBA supports an alpha channel; transparency is checked when selecting the artwork.
+    for (const [kind, entries] of archives) {
+      const prefix = kind === 'marketplace' ? pluginPrefix : '';
+      expect(Buffer.from(entries[`${prefix}${iconPath}`]!)).toEqual(original);
+      if (kind === 'claude-desktop') {
+        const manifest = JSON.parse(strFromU8(entries['manifest.json']!));
+        expect(manifest.icon).toBe(iconPath);
+        expect(entries[manifest.icon]).toBeDefined();
+      } else if (kind === 'codex' || kind === 'marketplace') {
+        const portable = JSON.parse(strFromU8(entries[`${prefix}plugin.json`]!));
+        const legacy = JSON.parse(strFromU8(entries[`${prefix}.codex-plugin/plugin.json`]!));
+        for (const hostInterface of [portable.extensions['com.openai'].interface, legacy.interface]) {
+          for (const field of ['logo', 'logoDark', 'composerIcon']) {
+            expect(hostInterface[field]).toBe(`./${iconPath}`);
+            expect(entries[`${prefix}${hostInterface[field].slice(2)}`]).toBeDefined();
+          }
+        }
+      }
+    }
+  });
+
   test('starts every extracted runtime without installing dependencies or contacting a native app', async () => {
     for (const [kind, entries] of archives) {
       const extractionRoot = join(isolatedRoot, kind);
