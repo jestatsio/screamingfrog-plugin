@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "prebuilt development preview",
+  "pluginVersion": "0.1.0",
+  "previewTag": "v0.1.0-preview.1",
+  "sourceRepository": "https://github.com/jestatsio/screamingfrog-plugin",
+  "sourceRevision": "9a9be4049a7cc871cb285bef113a67e6a6bfd3f7",
+  "builtAt": "2026-09-29T21:52:03.476Z",
+  "runtime": "Node.js 20+; prebuilt server and production dependencies included",
+  "validation": "docs/validation-2026-09-29.json in the plugin directory",
+  "releaseStatus": "provisional; licensed Windows native integration and complete assistant workflows remain release gates"
+}

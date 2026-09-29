@@ -1,0 +1,21 @@
+{
+  "name": "jestats-screamingfrog-audit",
+  "version": "0.1.0",
+  "description": "Provisional local technical SEO auditing and interactive offline reports from Screaming Frog crawls.",
+  "author": { "name": "JEStats", "url": "https://github.com/jestatsio" },
+  "homepage": "https://github.com/jestatsio/screamingfrog-plugin",
+  "repository": "https://github.com/jestatsio/screamingfrog-plugin",
+  "license": "MIT",
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json",
+  "interface": {
+    "displayName": "JEStats Screaming Frog Audit",
+    "shortDescription": "Audit Screaming Frog crawls and produce offline reports",
+    "longDescription": "Manage local audit jobs, inspect computed technical SEO findings and priorities, and create offline HTML/CSV reports. New crawls default to a genuine macOS native preset. The controlled macOS pipeline and new/saved findings equivalence passed; version 0.1.0 remains provisional while analysis readiness, applied settings, Windows, offline browser checks, and assistant-host installation gates are completed.",
+    "developerName": "JEStats",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": ["Audit this site and give me a client-ready action plan."],
+    "brandColor": "#39e7be"
+  }
+}

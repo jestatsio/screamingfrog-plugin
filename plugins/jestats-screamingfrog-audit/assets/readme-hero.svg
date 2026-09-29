@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="hero-title hero-description">
+  <title id="hero-title">JEStats Screaming Frog Audit</title>
+  <desc id="hero-description">Turn crawl data into clear priorities. A diagram connects crawl rows to shared fixes, then to evidence and an offline report.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1d25"/>
+      <stop offset="1" stop-color="#123a3e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="82%" cy="35%" r="65%">
+      <stop offset="0" stop-color="#39e7be" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#39e7be" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#39e7be"/>
+      <stop offset="1" stop-color="#97f5d9"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#c9f5e8" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="430" rx="24" fill="url(#background)"/>
+  <rect width="1200" height="430" rx="24" fill="url(#glow)"/>
+  <rect width="1200" height="430" rx="24" fill="url(#grid)"/>
+  <path d="M24 1H1176" stroke="#b9ffe8" stroke-opacity="0.16"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(56 42)">
+      <rect width="42" height="42" rx="11" fill="#183d40" stroke="#39e7be" stroke-opacity="0.35"/>
+      <path d="M10 29V22H15V29ZM19 29V16H24V29ZM28 29V10H33V29Z" fill="#39e7be"/>
+      <path d="M10 34H33" stroke="#effbf7" stroke-width="2" stroke-linecap="round"/>
+      <text x="57" y="27" fill="#effbf7" font-size="24" font-weight="700" letter-spacing="0.3">JEStats</text>
+      <text x="166" y="27" fill="#89b4b8" font-size="14" letter-spacing="2">SCREAMING FROG AUDIT</text>
+    </g>
+
+    <text x="56" y="162" fill="#effbf7" font-size="57" font-weight="700" letter-spacing="-1.9">Turn every crawl</text>
+    <text x="56" y="226" fill="url(#accent)" font-size="57" font-weight="700" letter-spacing="-1.9">into a clear plan.</text>
+    <text x="59" y="274" fill="#b8d0d1" font-size="19">Shared fixes. Transparent priorities.</text>
+    <text x="59" y="304" fill="#b8d0d1" font-size="19">Evidence you can put in front of a client.</text>
+
+    <g transform="translate(56 353)">
+      <rect width="131" height="32" rx="16" fill="#17393d" stroke="#39e7be" stroke-opacity="0.22"/>
+      <circle cx="17" cy="16" r="3" fill="#39e7be"/>
+      <text x="29" y="21" fill="#d5eee7" font-size="12" font-weight="700" letter-spacing="0.7">LOCAL MCP</text>
+      <rect x="144" width="185" height="32" rx="16" fill="#17393d" stroke="#39e7be" stroke-opacity="0.22"/>
+      <text x="161" y="21" fill="#d5eee7" font-size="12" font-weight="700" letter-spacing="0.7">OFFLINE HTML + CSV</text>
+      <rect x="342" width="132" height="32" rx="16" fill="#17393d" stroke="#39e7be" stroke-opacity="0.22"/>
+      <text x="359" y="21" fill="#d5eee7" font-size="12" font-weight="700" letter-spacing="0.7">OPEN SOURCE</text>
+    </g>
+
+    <g transform="translate(642 113)">
+      <text x="0" y="0" fill="#96c6c5" font-size="12" font-weight="700" letter-spacing="2.1">MANY URLS. FEWER SHARED FIXES.</text>
+
+      <g transform="translate(0 31)">
+        <rect width="154" height="196" rx="16" fill="#102a31" stroke="#53797b" stroke-opacity="0.65"/>
+        <text x="18" y="29" fill="#d0e8e3" font-size="14" font-weight="700">Crawl data</text>
+        <path d="M18 42H136" stroke="#426368"/>
+        <g fill="#33565b">
+          <rect x="18" y="58" width="98" height="8" rx="4"/>
+          <rect x="18" y="78" width="118" height="8" rx="4"/>
+          <rect x="18" y="98" width="84" height="8" rx="4"/>
+          <rect x="18" y="118" width="112" height="8" rx="4"/>
+          <rect x="18" y="138" width="96" height="8" rx="4"/>
+        </g>
+        <rect x="18" y="98" width="84" height="8" rx="4" fill="#39e7be" fill-opacity="0.55"/>
+        <text x="18" y="177" fill="#94b9ba" font-size="11">Indexed local snapshot</text>
+      </g>
+
+      <path d="M166 129H196M190 123L196 129L190 135" fill="none" stroke="#39e7be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(208 31)">
+        <rect width="154" height="196" rx="16" fill="#143a3c" stroke="#39e7be" stroke-opacity="0.65"/>
+        <text x="18" y="29" fill="#e5faf1" font-size="14" font-weight="700">Shared fixes</text>
+        <path d="M18 42H136" stroke="#337c70"/>
+        <rect x="16" y="56" width="122" height="32" rx="7" fill="#204c47"/>
+        <circle cx="29" cy="72" r="4" fill="#f4c470"/>
+        <text x="40" y="77" fill="#e5faf1" font-size="11">Repair destination</text>
+        <rect x="16" y="99" width="122" height="32" rx="7" fill="#204c47"/>
+        <circle cx="29" cy="115" r="4" fill="#39e7be"/>
+        <text x="40" y="120" fill="#e5faf1" font-size="11">Resolve canonicals</text>
+        <text x="18" y="177" fill="#a6d8ce" font-size="11">Evidence + rationale</text>
+      </g>
+
+      <path d="M374 129H404M398 123L404 129L398 135" fill="none" stroke="#39e7be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(417 68)">
+        <rect width="87" height="123" rx="12" fill="#e5f6ee"/>
+        <path d="M65 0V23H87" fill="#c3e3d5"/>
+        <text x="14" y="43" fill="#143a3c" font-size="12" font-weight="700">Action</text>
+        <text x="14" y="60" fill="#143a3c" font-size="12" font-weight="700">plan</text>
+        <path d="M15 75H68M15 85H59M15 95H65" stroke="#659c8c" stroke-width="3" stroke-linecap="round"/>
+        <text x="43" y="145" text-anchor="middle" fill="#b8d8d2" font-size="11">Offline report</text>
+      </g>
+    </g>
+  </g>
+</svg>

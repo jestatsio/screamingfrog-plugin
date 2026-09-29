@@ -1,0 +1,33 @@
+{
+  "id": "technical-audit-v1",
+  "provenance": "technical-audit-v1:provisional-24.3-export",
+  "status": "provisional native capture; applied-settings and Windows validation pending",
+  "file": "technical-audit-v1.seospiderconfig",
+  "bytes": 38399,
+  "sha256": "241dab5bd25edee287b778e29e7918559e7f3d4bb728f8c414a7d89ed754dd38",
+  "source": {
+    "platform": "macOS",
+    "screamingFrogVersion": "24.3",
+    "exportDate": "2026-09-29",
+    "method": "fresh licensed application profile export with no API accounts configured",
+    "format": "native Java serialization"
+  },
+  "configuredSettings": {
+    "rendering": "standard HTML with text-only rendering",
+    "hyperlinks": "crawl and store",
+    "canonicals": "crawl and store",
+    "extract": ["titles", "meta descriptions", "H1", "indexability"],
+    "linkedXMLSitemaps": true,
+    "robotsSitemapDiscovery": true,
+    "automaticPostCrawlAnalysis": true,
+    "storeRawHTML": false,
+    "storeRenderedHTML": false,
+    "nativeCrawlLimit": 100001
+  },
+  "verification": {
+    "macOSNativeConfigPath": "accepted",
+    "privacyReview": "read-only inspection of complete serialized structure found no stored credentials, private home paths, credential-bearing URLs, or personal email addresses; authentication/cookie entries are flags/enums",
+    "appliedNativeSettings": "pending",
+    "windowsCompatibility": "pending"
+  }
+}

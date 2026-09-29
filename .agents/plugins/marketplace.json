@@ -1,0 +1,20 @@
+{
+  "name": "jestats-plugins",
+  "interface": {
+    "displayName": "JEStats Plugins"
+  },
+  "plugins": [
+    {
+      "name": "jestats-screamingfrog-audit",
+      "source": {
+        "source": "local",
+        "path": "./plugins/jestats-screamingfrog-audit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

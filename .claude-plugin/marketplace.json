@@ -1,0 +1,13 @@
+{
+  "name": "jestats-plugins",
+  "description": "Prebuilt JEStats plugins for local technical SEO audits and offline reports.",
+  "owner": {
+    "name": "JEStats"
+  },
+  "plugins": [
+    {
+      "name": "jestats-screamingfrog-audit",
+      "source": "./plugins/jestats-screamingfrog-audit"
+    }
+  ]
+}
