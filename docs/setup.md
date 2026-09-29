@@ -2,56 +2,69 @@
 
 The same compiled `dist/cli.js` supplies the nine audit tools to all hosts. Use a local client on the same machine as the licensed Screaming Frog application. Version 0.1.0 remains provisional: Windows native checks and all six host/OS installation journeys are pending; see the [compatibility matrix](compatibility.md).
 
-For building and testing, use Node.js 20.19+, 22.12+, or 24+. First run `npm ci` and `npm run check` from the repository. The compiled plugin supports Node.js 20+. Keep the visible Screaming Frog application running in database storage mode with native MCP enabled. It normally serves `http://127.0.0.1:11435/mcp`.
+The **[installation page](https://jestatsio.github.io/screamingfrog-plugin/)** offers prebuilt development previews. They include the compiled server and production dependencies, so users do not need to clone the repository, run npm, or build anything. Keep the visible Screaming Frog application running in database storage mode with native MCP enabled. It normally serves `http://127.0.0.1:11435/mcp`.
 
 ## Claude Desktop
 
-Run `npm run package:plugins`, then select the generated `*-claude-desktop.mcpb` under **Settings > Extensions > Advanced Settings > Install Extension**. Review and install it, then restart the app if needed. The bundle includes its JavaScript and production dependencies. Your desktop host must provide a compatible Node.js runtime.
+**[Download for Claude Desktop](https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.0-preview.1/jestats-screamingfrog-audit-0.1.0-preview.1.mcpb)**, open the downloaded `.mcpb`, and review and confirm **Install**. Claude Desktop supplies the compatible Node.js runtime. If opening the file does not show the installer, use **Settings > Extensions > Advanced settings > Install Extension…** and select it. Restart the app if needed. This download/open/confirmation flow is described in [Anthropic's desktop extensions guide](https://www.anthropic.com/engineering/desktop-extensions).
 
 The extension exposes a localhost endpoint setting and a directory for persisted audit jobs, immutable snapshots, and reports. Neither setting requires a password or licence key. Native licence activation stays in Screaming Frog. The bundle format follows the [official MCPB manifest specification](https://github.com/modelcontextprotocol/mcpb/blob/main/MANIFEST.md).
 
 ## Claude Code
 
-For development, load this built repository directly:
+In **Claude Code 2.1.275+**, paste this into an interactive session:
 
-```sh
-claude --plugin-dir "/absolute/path/to/screamingfrog-plugin"
+```text
+/plugin install jestats-screamingfrog-audit --marketplace jestatsio/screamingfrog-plugin
 ```
 
-For the ZIP distribution, extract `*-claude-code.zip` into a directory and point `--plugin-dir` at that directory. `.claude-plugin/plugin.json` identifies the plugin; root `.mcp.json` launches the packaged `dist/cli.js` using `${CLAUDE_PLUGIN_ROOT}`. The `audit` skill guides setup and only uses tools available in the installed build. See the [official Claude Code plugin reference](https://code.claude.com/docs/en/plugins-reference).
+Confirm adding the community marketplace and installing the plugin in the desired scope. Claude Code fetches a prebuilt release ZIP and verifies its SHA-256. **Node.js 20+** must be available to launch the server.
 
-Validate a built directory when Claude Code is installed:
+For **Claude Code 2.1.224+**, use two shell commands instead:
 
 ```sh
-claude plugin validate "/absolute/path/to/screamingfrog-plugin" --strict
+claude plugin marketplace add jestatsio/screamingfrog-plugin
+claude plugin install jestats-screamingfrog-audit@jestats-plugins
 ```
+
+Restart the session after installation. See the official [one-command installation instructions](https://code.claude.com/docs/en/plugins/install#add-a-marketplace-and-install-in-one-command) and [archive source requirements](https://code.claude.com/docs/en/plugins/marketplace-reference#archive-plugin-source). For a manual/session-only alternative, download `*-claude-code.zip` from the [prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1), extract it, and run `claude --plugin-dir "/absolute/path/to/extracted-plugin"`.
 
 ## Local Codex
 
-For a direct MCP development connection:
+With a current Codex CLI and **Node.js 20+**, run:
+
+```sh
+codex plugin marketplace add jestatsio/screamingfrog-plugin
+codex plugin add jestats-screamingfrog-audit@jestats-plugins
+```
+
+The repository's community catalog points at an immutable prebuilt Git snapshot. Codex downloads the plugin and its dependencies without an npm build. Restart your local session/app after installation. Marketplace CLI commands were inspected on Codex CLI 0.159.0; older clients may need an update. See the [official packaging and marketplace reference](https://developers.openai.com/plugins/build/plugins#marketplace-metadata).
+
+After registering the marketplace, the installation page's **Open in Codex** button uses:
+
+```text
+codex://plugins/install/jestats-screamingfrog-audit?marketplace=jestats-plugins
+```
+
+This route was verified in the installed desktop app's parser. It opens the plugin's details/install screen and requires an already registered marketplace; it does not silently install or add a marketplace. If a browser cannot launch Codex, use the CLI commands above. GitHub's Markdown renderer may omit custom-protocol links, so the clickable button lives on the installation page.
+
+For a manual/local alternative, download the `*-marketplace.zip`, extract it, and run `codex plugin marketplace add "/absolute/path/to/extracted-marketplace"`, followed by the same `codex plugin add` command. The portable `plugin.json` and `mcp.json` launch `${PLUGIN_ROOT}/dist/cli.js`. The compatibility manifest also points to `mcp.json`; actual host usability remains a validation gate.
+
+## Updates and removal
+
+Preview packages stay pinned to reviewed content. A future release updates the public catalogs. In Claude Code, run `claude plugin marketplace update jestats-plugins`, then `claude plugin update jestats-screamingfrog-audit@jestats-plugins`. In Codex, run `codex plugin marketplace upgrade jestats-plugins`, then follow the available plugin update/reinstall flow for your host. Manually installed Claude Desktop bundles require downloading and installing the new `.mcpb`.
+
+To remove a CLI installation, use `claude plugin uninstall jestats-screamingfrog-audit@jestats-plugins` or `codex plugin remove jestats-screamingfrog-audit@jestats-plugins`. Stored local audit data is separate from the host's plugin cache.
+
+## Build from source
+
+For development, use Node.js 20.19+, 22.12+, or 24+, run `npm ci`, then `npm run check`. Run `npm run package:plugins` to generate timestamped archives, checksums, and a complete local marketplace. Load the built source with `claude --plugin-dir "/absolute/path/to/screamingfrog-plugin"`, or add its compiled MCP server directly:
 
 ```sh
 codex mcp add jestats-screamingfrog -- node "/absolute/path/to/screamingfrog-plugin/dist/cli.js"
 ```
 
-Restart your local chat/session after adding the server. This registers the tools; it does not install the bundled skill. To configure a nondefault endpoint, add `--env SCREAMINGFROG_MCP_URL=http://127.0.0.1:11435/mcp` before `--`.
-
-For a complete local plugin, extract `*-codex.zip` under `plugins/jestats-screamingfrog-audit` in a separate local marketplace root. Add `.agents/plugins/marketplace.json` at that root:
-
-```json
-{
-  "name": "jestats-local",
-    "interface": { "displayName": "JEStats Local Audit" },
-  "plugins": [{
-    "name": "jestats-screamingfrog-audit",
-    "source": { "source": "local", "path": "./plugins/jestats-screamingfrog-audit" },
-    "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
-    "category": "Productivity"
-  }]
-}
-```
-
-Use `codex plugin marketplace add "/absolute/path/to/local-marketplace-root"` where supported, then install the plugin through your local Plugins Directory. The portable root `plugin.json` and `mcp.json` use `${PLUGIN_ROOT}`. The package also includes the compatibility `.codex-plugin/plugin.json` and `.mcp.json` layout. Local plugin installation varies by host version and still needs verification. Follow the [official OpenAI plugin packaging guide](https://developers.openai.com/plugins/build/plugins).
+This direct MCP configuration does not install the audit skill. Set a nondefault native endpoint by adding `--env SCREAMINGFROG_MCP_URL=http://127.0.0.1:11435/mcp` before `--`.
 
 ## Other local MCP clients
 

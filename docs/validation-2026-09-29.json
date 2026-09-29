@@ -13,8 +13,8 @@
     "command": "npm run check",
     "typecheck": "passed",
     "build": "passed",
-    "testFiles": 8,
-    "tests": 201,
+    "testFiles": 9,
+    "tests": 204,
     "dependencyAudit": {
       "command": "npm audit",
       "vulnerabilities": 0
@@ -79,11 +79,18 @@
         "toolCount": 9,
         "presetBundled": true,
         "sampleBundled": true
+      },
+      {
+        "kind": "marketplace",
+        "isolatedStdio": "passed",
+        "toolCount": 9,
+        "presetBundled": true,
+        "sampleBundled": true
       }
     ],
     "claudeDesktopManifest": "official @anthropic-ai/mcpb 2.1.2 validator passed",
     "claudeCodeManifest": "local claude plugin validate --strict passed",
-    "scope": "isolated raw MCP startup on macOS Node22; host installation and usability remain pending"
+    "scope": "isolated raw MCP startup on macOS Node22 without dependency installation; archive checksums and prebuilt local marketplace paths verified; host installation and usability remain pending"
   },
   "syntheticBenchmark": {
     "urls": 100000,

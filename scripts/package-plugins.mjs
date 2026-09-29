@@ -81,7 +81,7 @@ shared['VALIDATION.json'] = strToU8(`${JSON.stringify({
   syntheticBenchmark: '100,000 URLs/2,000 findings; 2,738,382 HTML bytes; 459.3 ms generation; Node measurements only',
   syntheticBenchmarkEvidence: 'docs/validation-2026-09-29.json',
   limits: '100,000 URLs; 128 MiB each for selected extraction, link-evidence store, normalized snapshot, analysis candidate/finding data, and report payload; explicit failure without sampling',
-  publicReleaseAndMarketplace: 'not performed',
+  validatedReleaseAndOfficialDirectories: 'pending; development preview distribution does not complete native Windows or assistant installation gates',
 }, null, 2)}\n`);
 
 const outputs = path.join(root, 'artifacts', 'plugins');
@@ -89,19 +89,68 @@ await mkdir(outputs, { recursive: true });
 const stamp = new Date().toISOString().replace(/[-:.]/g, '');
 const suffix = randomUUID().slice(0, 8);
 const base = `jestats-screamingfrog-audit-${metadata.version}-${stamp}-${suffix}`;
-const checksums = [];
+const files = [];
 
-for (const [kind, extension, components] of [
-  ['claude-desktop', 'mcpb', ['manifest.json']],
-  ['claude-code', 'zip', ['.claude-plugin', '.mcp.json']],
-  ['codex', 'zip', ['plugin.json', 'mcp.json', '.codex-plugin', '.mcp.json']],
-]) {
-  const entries = { ...shared };
-  for (const component of components) await collect(component, entries);
+async function writeArchive(kind, extension, entries) {
   const archive = zipSync(entries, { level: 6 });
   const filename = `${base}-${kind}.${extension}`;
   await writeFile(path.join(outputs, filename), archive, { flag: 'wx' });
-  checksums.push(`${createHash('sha256').update(archive).digest('hex')}  ${filename}`);
+  files.push({ kind, filename, sha256: createHash('sha256').update(archive).digest('hex') });
   process.stdout.write(`${path.join(outputs, filename)}\n`);
 }
-await writeFile(path.join(outputs, `${base}-SHA256SUMS.txt`), `${checksums.join('\n')}\n`, { flag: 'wx' });
+
+for (const [kind, extension, components] of [
+  ['claude-desktop', 'mcpb', ['manifest.json']],
+  ['claude-code', 'zip', ['.claude-plugin/plugin.json', '.mcp.json']],
+  ['codex', 'zip', ['plugin.json', 'mcp.json', '.codex-plugin/plugin.json', '.mcp.json']],
+]) {
+  const entries = { ...shared };
+  for (const component of components) await collect(component, entries);
+  await writeArchive(kind, extension, entries);
+}
+
+// Both hosts install the same prebuilt plugin directory, without a build or npm install hook.
+const pluginName = 'jestats-screamingfrog-audit';
+const pluginSource = `./plugins/${pluginName}`;
+const pluginEntries = { ...shared };
+for (const component of ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json', '.mcp.json', 'plugin.json', 'mcp.json']) {
+  await collect(component, pluginEntries);
+}
+const marketplaceEntries = {
+  '.agents/plugins/marketplace.json': strToU8(`${JSON.stringify({
+    name: 'jestats-plugins',
+    interface: { displayName: 'JEStats Plugins' },
+    plugins: [{ name: pluginName, source: { source: 'local', path: pluginSource },
+      policy: { installation: 'AVAILABLE', authentication: 'ON_INSTALL' }, category: 'Productivity' }],
+  }, null, 2)}\n`),
+  '.claude-plugin/marketplace.json': strToU8(`${JSON.stringify({
+    name: 'jestats-plugins', description: 'Prebuilt JEStats plugins for local technical SEO audits and offline reports.',
+    owner: { name: 'JEStats' },
+    plugins: [{ name: pluginName, source: pluginSource }],
+  }, null, 2)}\n`),
+};
+for (const [name, bytes] of Object.entries(pluginEntries)) marketplaceEntries[`plugins/${pluginName}/${name}`] = bytes;
+
+const marketplaceParent = path.join(root, 'artifacts', 'marketplaces');
+await mkdir(marketplaceParent, { recursive: true });
+const marketplaceDirectory = path.join(marketplaceParent, base);
+await mkdir(marketplaceDirectory);
+for (const [name, bytes] of Object.entries(marketplaceEntries)) {
+  const destination = path.join(marketplaceDirectory, ...name.split('/'));
+  await mkdir(path.dirname(destination), { recursive: true });
+  await writeFile(destination, bytes, { flag: 'wx' });
+}
+await writeArchive('marketplace', 'zip', marketplaceEntries);
+
+let sourceRevision = 'unknown';
+try {
+  const revision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+  if (/^[a-f0-9]{40,64}$/.test(revision)) sourceRevision = revision;
+} catch { /* Packaging also works in source archives and CI environments without Git. */ }
+const checksumsFile = `${base}-SHA256SUMS.txt`;
+await writeFile(path.join(outputs, checksumsFile), `${files.map(file => `${file.sha256}  ${file.filename}`).join('\n')}\n`, { flag: 'wx' });
+const releaseMetadata = `${base}-RELEASE.json`;
+await writeFile(path.join(outputs, releaseMetadata), `${JSON.stringify({
+  base, version: metadata.version, sourceRevision, files, checksumsFile, marketplaceDirectory,
+}, null, 2)}\n`, { flag: 'wx' });
+process.stdout.write(`${path.join(outputs, releaseMetadata)}\n`);

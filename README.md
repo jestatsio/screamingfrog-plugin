@@ -15,6 +15,12 @@ A free, open-source local MCP plugin for Claude Desktop, Claude Code, and Codex.
 [![Local MCP](https://img.shields.io/badge/MCP-local%20stdio-39e7be?style=flat-square&labelColor=102a31)](docs/setup.md)
 [![Provisional version](https://img.shields.io/badge/v0.1.0-provisional-f4c470?style=flat-square&labelColor=102a31)](docs/compatibility.md)
 
+[![Download for Claude Desktop](assets/install-claude.svg)](https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.0-preview.1/jestats-screamingfrog-audit-0.1.0-preview.1.mcpb)
+[![Install in Codex](assets/install-codex.svg)](https://jestatsio.github.io/screamingfrog-plugin/#codex)
+[![Install in Claude Code](assets/install-code.svg)](https://jestatsio.github.io/screamingfrog-plugin/#claude-code)
+
+[Choose your assistant](https://jestatsio.github.io/screamingfrog-plugin/) · Prebuilt development preview · No repository build required
+
 [Get started](#get-started) · [Sample report](#explore-the-report) · [Tools](#nine-tools-one-workflow) · [Validation](#what-is-verified) · [Contribute](#develop-and-contribute)
 
 </div>
@@ -52,26 +58,19 @@ Open a **licensed Screaming Frog SEO Spider** with native MCP support, use **dat
 
 Licence activation stays in Screaming Frog. No JEStats cloud account or account-linking flow is required. See the [official native MCP guide](https://www.screamingfrog.co.uk/seo-spider/user-guide/configuration/#mcp-server).
 
-### 2. Build the plugin
+### 2. Install the preview
 
-Use **Node.js 20.19+, 22.12+, or 24+** for development. The compiled server targets Node.js 20+.
+Use the buttons above or the **[installation page](https://jestatsio.github.io/screamingfrog-plugin/)**. The packages include the compiled server, its dependencies, and the audit workflow. Claude Desktop supplies its Node.js runtime; Codex and Claude Code need **Node.js 20+** available locally.
 
-```sh
-git clone https://github.com/jestatsio/screamingfrog-plugin.git
-cd screamingfrog-plugin
-npm ci
-npm run check
-```
+| Assistant | Quick install |
+| :--- | :--- |
+| **Claude Desktop** | Download the `.mcpb`, open it, and confirm **Install** |
+| **Claude Code** | Paste `/plugin install jestats-screamingfrog-audit --marketplace jestatsio/screamingfrog-plugin` in a current session, then confirm installation |
+| **Local Codex** | Register the community marketplace once, then use the install page's **Open in Codex** button or the CLI install command |
 
-`check` typechecks, builds, and runs the fixture tests. Follow the [installation guide](docs/setup.md) for your assistant.
+Codex's app link opens installation details for an already registered marketplace. The [installation guide](docs/setup.md) includes the two first-time commands, supported host versions, manual alternatives, and updates. Installation and complete audit usability still need verification in each host/OS combination; see the [compatibility matrix](docs/compatibility.md).
 
-| Assistant | Installation path | macOS workflow | Windows workflow |
-| :--- | :--- | :--- | :--- |
-| **Claude Desktop** | Generate and install a `.mcpb` bundle | Pending host validation | Pending host + native validation |
-| **Claude Code** | Load the built directory with `--plugin-dir` | Pending host validation | Pending host + native validation |
-| **Local Codex** | Register stdio MCP or install the local plugin | Pending host validation | Pending host + native validation |
-
-All three use the same implementation. Run `npm run package:plugins` to build versioned development bundles with SHA-256 checksums. Public releases and marketplace submissions have not been published.
+Download archives and checksums from the **[development prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1)**. This is a JEStats community distribution; official directory submissions and a validated release remain pending.
 
 ### 3. Ask for an audit
 
@@ -131,10 +130,11 @@ Cancellation is recorded locally even during a disconnect. Native pause is attem
 
 | Check | Observed result |
 | :--- | :--- |
-| Typecheck, build, and fixture suite | **201 tests passed** locally |
+| Typecheck, build, and fixture suite | **204 tests passed** locally, including prebuilt packaging checks |
 | Licensed macOS SEO Spider 24.3 | New crawl, stable identity, pagination, reconnect, and saved-crawl reload reconciliation passed |
 | New/saved audit equivalence | **13 identical snapshot rows and 14 findings**, with matching snapshot hashes |
 | Actual stdio MCP workflow | Nine tools discovered; bounded evidence queried; HTML and both CSVs generated |
+| Prebuilt distribution | All four extracted packages expose nine tools without installing dependencies; generated Claude marketplace and plugin pass strict validation |
 | Synthetic scale benchmark | **100,000 URLs / 2,000 findings**; 2.74 MB HTML generated in **459.3 ms** in Node.js |
 | Dependency audit | Zero reported vulnerabilities at that snapshot |
 
@@ -145,6 +145,15 @@ The benchmark measures Node generation and indexed lookups; **browser responsive
 The [compatibility matrix](docs/compatibility.md) and [native verification checklist](docs/native-verification.md) track the remaining gates. CI checks fixture builds and packaging on macOS and Windows; it does not verify licensed native installations or assistant usability.
 
 ## Develop and contribute
+
+Use **Node.js 20.19+, 22.12+, or 24+** for development:
+
+```sh
+git clone https://github.com/jestatsio/screamingfrog-plugin.git
+cd screamingfrog-plugin
+npm ci
+npm run check
+```
 
 ```sh
 npm run check             # Typecheck, build, and fixture tests

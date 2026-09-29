@@ -6,7 +6,7 @@ Version 0.1.0 is a provisional audit implementation. The compiled server targets
 | --- | --- | --- | --- |
 | Claude Desktop | Pending | Pending | `.mcpb` |
 | Claude Code | Pending | Pending | ZIP with `.claude-plugin/plugin.json` |
-| Local Codex | Pending | Pending | ZIP with portable and compatibility manifests |
+| Local Codex | Pending | Pending | Prebuilt community marketplace or ZIP with portable and compatibility manifests |
 | Generic local MCP client | Pending | Pending | stdio `node dist/cli.js` |
 
 | Gate | Status |
@@ -24,7 +24,9 @@ Version 0.1.0 is a provisional audit implementation. The compiled server targets
 | Synthetic 100,000-URL report | Node generation passed with 2,000 findings: 2,738,382 HTML bytes, 459.3 ms generation, 0.036 ms filter p95, 0.055 ms indexed lookup p95, 440.1 MiB RSS; browser responsiveness unverified |
 | Offline report/browser interaction | Pending manual local-file validation |
 | Fixture/type/build checks | Local checks have passed; rerun `npm run check` for the final revision. `npm audit` reported zero vulnerabilities on 2026-09-29 |
-| Packages | `npm run package:plugins`; development artifacts until host/OS checks pass |
+| Packages | Prebuilt development preview downloads and a community marketplace; `npm run package:plugins` reproduces development archives |
+| Prebuilt package checks | Four extracted runtimes expose nine tools without dependency installation; checksums/catalog paths verified; generated Claude marketplace and plugin pass strict validation |
+| Community distribution | [Installation page](https://jestatsio.github.io/screamingfrog-plugin/) and [v0.1.0-preview.1 prerelease](https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1); this does not satisfy host/native release gates |
 | Validated release / marketplace submissions | Not performed |
 
 The 100,000-URL cap also has a 128 MiB budget for each selected extraction, link-evidence store, normalized snapshot, analysis candidate/finding dataset, and report payload. Exceeding a limit fails explicitly without sampling.

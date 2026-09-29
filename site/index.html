@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Install the free JEStats Screaming Frog Audit plugin for Claude Desktop, Claude Code, or local Codex. Turn crawl data into an evidence-backed SEO action plan.">
+  <meta name="theme-color" content="#0b1d25">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Install JEStats · Screaming Frog Audit</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #0b1d25;
+      --panel: #102a31;
+      --panel-light: #16383c;
+      --text: #effbf7;
+      --muted: #b8d0d1;
+      --accent: #39e7be;
+      --border: #34585e;
+      --gold: #f4c470;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      line-height: 1.6;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--background); color: var(--text); }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    a:hover { color: #b9ffe8; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 5px;
+    }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .skip { position: absolute; left: 1rem; top: -5rem; z-index: 3; background: var(--text); color: var(--background); padding: .7rem 1rem; border-radius: .5rem; }
+    .skip:focus { top: 1rem; }
+    .container { max-width: 1180px; margin: auto; padding: 0 28px; }
+    header { border-bottom: 1px solid #24444b; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 90px; }
+    .brand { display: flex; align-items: center; gap: .8rem; color: var(--text); text-decoration: none; font-size: 1.25rem; font-weight: 750; letter-spacing: -.03em; }
+    .brand svg { width: 38px; height: 38px; flex: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.4rem; font-size: .875rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 55px;
+      background: radial-gradient(ellipse at 75% 10%, #1f5d5547, transparent 58%);
+    }
+    .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; color: var(--muted); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .preview { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .7rem; color: var(--gold); background: #f4c47012; border: 1px solid #f4c47045; border-radius: 2rem; letter-spacing: .07em; }
+    .preview::before { content: ""; width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
+    h1 { max-width: 840px; margin: 1.3rem 0 1.4rem; font-size: clamp(2.7rem, 5.9vw, 4.8rem); line-height: 1.08; font-weight: 750; letter-spacing: -.055em; }
+    h1 span { display: block; color: var(--accent); }
+    .lede { max-width: 690px; margin: 0; color: var(--muted); font-size: 1.15rem; line-height: 1.75; }
+    .features { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; margin-top: 1.8rem; color: #d4ebe4; font-size: .86rem; }
+    .features span { display: inline-flex; align-items: center; gap: .5rem; }
+    .features span::before { content: "✓"; color: var(--accent); font-weight: 700; }
+    .section-title { margin: 0 0 .4rem; font-size: 1.7rem; line-height: 1.3; letter-spacing: -.035em; }
+    .section-intro { margin: 0; color: var(--muted); }
+    .installers { padding: 10px 0 65px; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+    .card { display: flex; flex-direction: column; padding: 28px 25px 24px; background: linear-gradient(145deg, #15343a, var(--panel)); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 12px 32px #020b1029; scroll-margin-top: 24px; }
+    .card-head { display: flex; align-items: center; gap: .8rem; }
+    .host-icon { display: grid; place-items: center; width: 45px; height: 45px; color: var(--accent); background: #39e7be10; border: 1px solid #39e7be35; border-radius: 12px; font-size: 1.35rem; font-weight: 700; }
+    .host-icon svg { width: 25px; height: 25px; }
+    h2, h3 { font-weight: 700; }
+    .card h3 { margin: 0; font-size: 1.23rem; letter-spacing: -.02em; }
+    .host-kind { margin: 0; color: var(--muted); font-size: .77rem; }
+    .card-copy { margin: 1.2rem 0 1.1rem; color: var(--muted); font-size: .92rem; }
+    .steps { margin: 0 0 1.4rem; padding-left: 1.25rem; color: #d7ece7; font-size: .89rem; }
+    .steps li { margin-bottom: .5rem; padding-left: .15rem; }
+    .steps li::marker { color: var(--accent); font-weight: 700; }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: .6rem;
+      min-height: 46px;
+      padding: .65rem 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      background: var(--accent);
+      color: #082c26;
+      text-decoration: none;
+      font: inherit;
+      font-size: .89rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease;
+    }
+    .button:hover { color: #082c26; background: #97f5d9; border-color: #97f5d9; }
+    .button.secondary { color: var(--text); background: #39e7be0d; border-color: #527b7b; }
+    .button.secondary:hover { background: #39e7be20; border-color: var(--accent); }
+    .card-actions { display: grid; gap: .65rem; margin-top: auto; }
+    .note { margin: .8rem 0 0; color: var(--muted); font-size: .78rem; }
+    .command { margin: 0 0 1rem; padding: .8rem .9rem; background: #071b22; border: 1px solid #2a4b51; border-radius: 9px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .73rem; line-height: 1.7; }
+    code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
+    .copy-status { min-height: 1.3rem; margin: .5rem 0 0; color: var(--accent); font-size: .78rem; }
+    .fallback { margin-top: 1rem; font-size: .78rem; color: var(--muted); }
+    .fallback summary { cursor: pointer; color: var(--muted); }
+    .fallback .command { margin-top: .75rem; font-size: .7rem; }
+    .fallback p { margin-bottom: 0; }
+    .preparation { padding: 36px; background: #102a31; border: 1px solid var(--border); border-radius: 18px; }
+    .prep-heading { display: flex; align-items: baseline; gap: .85rem; flex-wrap: wrap; margin-bottom: .6rem; }
+    .prep-heading .section-title { margin: 0; }
+    .mini-label { color: var(--accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+    .prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 20px; }
+    .prep-grid h3 { margin: 0 0 .5rem; font-size: .96rem; }
+    .prep-grid p { margin: 0; color: var(--muted); font-size: .89rem; }
+    .inline-code { color: #d6efe8; font-size: .85em; overflow-wrap: anywhere; }
+    .workflow { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 40px; padding: 65px 0; }
+    .workflow p { margin: 1rem 0 0; color: var(--muted); font-size: .95rem; }
+    .prompt { margin: 0; padding: 28px; background: linear-gradient(135deg, #19483e, #102a31); border: 1px solid #39e7be4d; border-radius: 16px; }
+    .prompt-label { display: block; margin-bottom: .9rem; color: #9acdc4; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
+    .prompt p { margin: 0; color: var(--text); font-size: clamp(1.25rem, 2.5vw, 1.7rem); line-height: 1.45; letter-spacing: -.03em; }
+    .preview-note { display: flex; gap: 1.15rem; padding: 23px 26px; background: #f4c47008; border: 1px solid #f4c47038; border-radius: 12px; margin-bottom: 55px; }
+    .preview-note .status-dot { flex: none; width: 9px; height: 9px; margin-top: .5rem; background: var(--gold); border-radius: 50%; }
+    .preview-note p { margin: 0; font-size: .84rem; color: var(--muted); }
+    .preview-note strong { color: var(--gold); }
+    footer { border-top: 1px solid #24444b; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 28px 0; font-size: .78rem; color: var(--muted); }
+    .footer-content p { margin: 0; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+    .footer-links a { color: var(--muted); }
+    @media (max-width: 950px) {
+      .cards { grid-template-columns: 1fr; }
+      .card { display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; }
+      .card-head, .card-copy, .steps { grid-column: 1; }
+      .card-actions { grid-column: 2; grid-row: 1 / span 4; align-self: center; width: 100%; }
+      .card-copy { margin-top: 1rem; }
+      .steps { margin-bottom: 0; }
+      .workflow { gap: 25px; }
+    }
+    @media (max-width: 620px) {
+      .container { padding: 0 20px; }
+      .nav { min-height: 76px; }
+      .nav-links { gap: 1rem; font-size: .78rem; }
+      .nav-links .optional { display: none; }
+      .hero { padding-top: 55px; }
+      .lede { font-size: 1rem; }
+      .card { display: flex; padding: 25px 22px; }
+      .card-actions { margin-top: 1.1rem; }
+      .preparation { padding: 25px 22px; }
+      .prep-grid, .workflow { grid-template-columns: 1fr; gap: 25px; }
+      .workflow { padding: 45px 0; }
+      .preview-note { padding: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .button { transition: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#install">Skip to installation options</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="https://github.com/jestatsio/screamingfrog-plugin" aria-label="JEStats Screaming Frog Audit on GitHub">
+        <svg viewBox="0 0 42 42" aria-hidden="true" focusable="false"><rect width="42" height="42" rx="11" fill="#183d40" stroke="#39e7be" stroke-opacity=".5"/><path d="M10 29V22H15V29ZM19 29V16H24V29ZM28 29V10H33V29Z" fill="#39e7be"/><path d="M10 34H33" stroke="#effbf7" stroke-width="2" stroke-linecap="round"/></svg>
+        JEStats
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#prepare">Setup</a>
+        <a class="optional" href="https://github.com/jestatsio/screamingfrog-plugin/blob/main/docs/compatibility.md">Compatibility</a>
+        <a href="https://github.com/jestatsio/screamingfrog-plugin">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container">
+        <div class="eyebrow"><span class="preview">Development preview</span><span>Free · Open source · Local MCP</span></div>
+        <h1 id="page-title">Your next crawl.<span>A clearer action plan.</span></h1>
+        <p class="lede">Bring Screaming Frog to Claude or Codex. JEStats groups related problems into shared fixes, explains the priorities, and creates an evidence-backed report you can share with a client.</p>
+        <div class="features" aria-label="Plugin benefits"><span>Offline HTML + CSV reports</span><span>Transparent priorities</span><span>Local crawl storage</span></div>
+      </div>
+    </section>
+    <section class="container installers" id="install" aria-labelledby="install-title">
+      <h2 class="section-title" id="install-title">Choose your assistant.</h2>
+      <p class="section-intro">Prebuilt packages. No repository checkout or build step.</p>
+      <div class="cards">
+        <article class="card" aria-labelledby="desktop-title">
+          <div class="card-head">
+            <div class="host-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21H16M12 17V21"/></svg></div>
+            <div><h3 id="desktop-title">Claude Desktop</h3><p class="host-kind">Download · Open · Install</p></div>
+          </div>
+          <p class="card-copy">A self-contained desktop extension with the audit server and its dependencies included.</p>
+          <ol class="steps">
+            <li>Download the <code>.mcpb</code> bundle.</li>
+            <li>Open it with Claude Desktop.</li>
+            <li>Review the settings and click <strong>Install</strong>.</li>
+          </ol>
+          <div class="card-actions">
+            <a class="button" href="https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.0-preview.1/jestats-screamingfrog-audit-0.1.0-preview.1.mcpb">Download for Claude Desktop <span aria-hidden="true">↓</span></a>
+            <p class="note">v0.1.0-preview.1 · macOS + Windows target<br>Claude Desktop provides the Node.js runtime.</p>
+            <details class="fallback">
+              <summary>If double-click does not open the installer</summary>
+              <p>In Claude Desktop, choose <strong>Settings → Extensions → Advanced settings → Install Extension…</strong> and select the downloaded file. <a href="https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop">Official installation guide ↗</a></p>
+            </details>
+          </div>
+        </article>
+        <article class="card" id="codex" aria-labelledby="codex-title">
+          <div class="card-head">
+            <div class="host-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L2 12L8 18M16 6L22 12L16 18M14 3L10 21"/></svg></div>
+            <div><h3 id="codex-title">Codex</h3><p class="host-kind">Register once · Install locally</p></div>
+          </div>
+          <p class="card-copy">Add the JEStats marketplace once, then install the plugin with the Codex CLI.</p>
+          <ol class="steps">
+            <li>Copy the two setup commands.</li>
+            <li>Run them in your terminal with Codex installed.</li>
+            <li>Start a local session and check the connection.</li>
+          </ol>
+          <div class="card-actions">
+            <pre class="command"><code id="codex-command">codex plugin marketplace add jestatsio/screamingfrog-plugin
+codex plugin add jestats-screamingfrog-audit@jestats-plugins</code></pre>
+            <button class="button" type="button" data-copy-target="codex-command" aria-describedby="codex-status">Copy Codex setup commands <span aria-hidden="true">⧉</span></button>
+            <p class="copy-status" id="codex-status" role="status" aria-live="polite"></p>
+            <a class="button secondary" href="codex://plugins/install/jestats-screamingfrog-audit?marketplace=jestats-plugins">Open Codex install details <span aria-hidden="true">↗</span></a>
+            <p class="note">The app link requires the marketplace to be registered first. It opens install details for review. Node.js 20+ required.</p>
+          </div>
+        </article>
+        <article class="card" id="claude-code" aria-labelledby="code-title">
+          <div class="card-head">
+            <div class="host-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 9L9 12L6 15M12 15H17"/></svg></div>
+            <div><h3 id="code-title">Claude Code</h3><p class="host-kind">One command · Review · Install</p></div>
+          </div>
+          <p class="card-copy">Paste the install command into a Claude Code session. Review the plugin and choose your scope.</p>
+          <ol class="steps">
+            <li>Copy the command below.</li>
+            <li>Paste it in an interactive Claude Code session.</li>
+            <li>Confirm the marketplace and choose an install scope.</li>
+          </ol>
+          <div class="card-actions">
+            <pre class="command"><code id="code-command">/plugin install jestats-screamingfrog-audit --marketplace jestatsio/screamingfrog-plugin</code></pre>
+            <button class="button" type="button" data-copy-target="code-command" aria-describedby="code-status">Copy Claude Code install command <span aria-hidden="true">⧉</span></button>
+            <p class="copy-status" id="code-status" role="status" aria-live="polite"></p>
+            <p class="note">One-command flow requires Claude Code 2.1.275+. Node.js 20+ required for the audit server.</p>
+            <details class="fallback">
+              <summary>Prefer terminal setup?</summary>
+              <pre class="command"><code>claude plugin marketplace add jestatsio/screamingfrog-plugin
+claude plugin install jestats-screamingfrog-audit@jestats-plugins</code></pre>
+              <p>The archive installer requires Claude Code 2.1.224+. <a href="https://code.claude.com/docs/en/plugins/install">Official plugin installation guide ↗</a></p>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="container" id="prepare" aria-labelledby="prepare-title">
+      <div class="preparation">
+        <div class="prep-heading"><span class="mini-label">Before your first audit</span><h2 class="section-title" id="prepare-title">Have Screaming Frog ready.</h2></div>
+        <p class="section-intro">Your licence stays in Screaming Frog. There is no JEStats account to connect.</p>
+        <div class="prep-grid">
+          <div>
+            <h3>Open the licensed desktop app</h3>
+            <p>Use a Screaming Frog SEO Spider installation with native MCP support and <strong>database storage mode</strong>. Keep the application running and visible while the assistant works.</p>
+          </div>
+          <div>
+            <h3>Enable its native MCP server</h3>
+            <p>Choose <strong>File → Settings → MCP Server</strong>. The usual URL is <code class="inline-code">http://127.0.0.1:11435/mcp</code>. See <a href="https://www.screamingfrog.co.uk/seo-spider/user-guide/configuration/#mcp-server">Screaming Frog’s setup guide ↗</a> or our <a href="https://github.com/jestatsio/screamingfrog-plugin/blob/main/docs/setup.md">connection instructions</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container workflow" aria-labelledby="workflow-title">
+      <div>
+        <span class="mini-label">Then ask for the outcome</span>
+        <h2 class="section-title" id="workflow-title">Hundreds of URLs.<br>A handful of shared fixes.</h2>
+        <p>Start with a new crawl or a saved database crawl. Your assistant checks the connection, inspects the evidence, and produces the local HTML report and supporting CSVs.</p>
+        <p><a href="https://github.com/jestatsio/screamingfrog-plugin#explore-the-report">Explore the synthetic sample report ↗</a></p>
+      </div>
+      <blockquote class="prompt"><span class="prompt-label">Your first request</span><p>“Audit this site and give me a client-ready action plan.”</p></blockquote>
+    </section>
+    <div class="container">
+      <aside class="preview-note" aria-label="Development preview status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <p><strong>Development preview.</strong> The controlled macOS pipeline has passed. Windows native integration, full assistant installation workflows, applied preset settings, analysis readiness, and offline report browser checks remain pending. Read the <a href="https://github.com/jestatsio/screamingfrog-plugin/blob/main/docs/compatibility.md">compatibility matrix</a> for the current evidence and remaining release gates.</p>
+      </aside>
+    </div>
+  </main>
+  <footer>
+    <div class="container footer-content">
+      <p>JEStats · Free and open source under MIT.<br>An independent plugin for Screaming Frog SEO Spider.</p>
+      <nav class="footer-links" aria-label="Project links"><a href="https://github.com/jestatsio/screamingfrog-plugin">Source</a><a href="https://github.com/jestatsio/screamingfrog-plugin/releases/tag/v0.1.0-preview.1">Preview downloads</a><a href="https://github.com/jestatsio/screamingfrog-plugin/issues">Get help</a></nav>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('[data-copy-target]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const command = document.getElementById(button.dataset.copyTarget);
+        const status = document.getElementById(button.getAttribute('aria-describedby'));
+        if (!command || !status) return;
+        try {
+          if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(command.textContent.trim());
+          status.textContent = 'Copied. Paste the command into the indicated terminal or session.';
+        } catch {
+          const selection = window.getSelection();
+          if (selection) {
+            const range = document.createRange();
+            range.selectNodeContents(command);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+          status.textContent = 'Clipboard access unavailable. Select or copy the command above manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
