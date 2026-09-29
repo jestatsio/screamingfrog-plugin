@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-29",
+  "pluginVersion": "0.1.0",
+  "status": "provisional development snapshot; not a validated release",
+  "recordScope": "Selected results from local validation, with machine paths, account details, crawl IDs, and raw crawl records omitted. These observations are not a substitute for running the checks on the revision and platform in use.",
+  "environment": {
+    "nativePlatform": "licensed macOS arm64",
+    "screamingFrogVersion": "24.3",
+    "nodeVersion": "v22.23.2"
+  },
+  "localChecks": {
+    "command": "npm run check",
+    "typecheck": "passed",
+    "build": "passed",
+    "testFiles": 8,
+    "tests": 201,
+    "dependencyAudit": {
+      "command": "npm audit",
+      "vulnerabilities": 0
+    },
+    "reviews": {
+      "code": "no unresolved actionable findings",
+      "typescript": "no unresolved actionable findings",
+      "security": "no credential or private-path blocker found"
+    }
+  },
+  "nativeIntegration": {
+    "connection": "passed",
+    "singleNewCrawlLaunch": "passed",
+    "stableDatabaseIdentity": "passed",
+    "pagedExportAndTerminalBoundary": "passed",
+    "deliberateReconnect": "passed",
+    "savedCrawlReload": "passed; one interrupted response reconciled without repeating the load",
+    "newSavedEquivalent": {
+      "newRows": 13,
+      "savedRows": 13,
+      "snapshotHashesMatch": true,
+      "snapshotSHA256": "71c0d98ac2da29fd2b4c0c112d6d50c4976c58a62075a546f13c2eae056ccfbb",
+      "findingsMatch": true,
+      "newFindingCount": 14,
+      "savedFindingCount": 14,
+      "hyperlinkRows": 19
+    },
+    "actualStdioMCP": "nine tools discovered; bounded findings/evidence queried; HTML and two CSVs generated",
+    "compiledStdioWorkflow": "saved audit and report generation passed; snapshot and findings matched",
+    "nativeAnalysisReadiness": "unassessed; percentages alone do not prove readiness"
+  },
+  "preset": {
+    "id": "technical-audit-v1",
+    "provenance": "technical-audit-v1:provisional-24.3-export",
+    "bytes": 38399,
+    "sha256": "241dab5bd25edee287b778e29e7918559e7f3d4bb728f8c414a7d89ed754dd38",
+    "nativeConfigPath": "accepted on macOS",
+    "privacyReview": "read-only inspection of complete serialized structure found no stored credentials, private home paths, credential-bearing URLs, or personal email addresses; authentication/cookie entries are flags/enums",
+    "appliedSettings": "not independently verified",
+    "windowsCompatibility": "pending"
+  },
+  "packaging": {
+    "version": "0.1.0",
+    "formats": [
+      {
+        "kind": "claude-desktop",
+        "isolatedStdio": "passed",
+        "toolCount": 9,
+        "presetBundled": true,
+        "sampleBundled": true
+      },
+      {
+        "kind": "claude-code",
+        "isolatedStdio": "passed",
+        "toolCount": 9,
+        "presetBundled": true,
+        "sampleBundled": true
+      },
+      {
+        "kind": "codex",
+        "isolatedStdio": "passed",
+        "toolCount": 9,
+        "presetBundled": true,
+        "sampleBundled": true
+      }
+    ],
+    "claudeDesktopManifest": "official @anthropic-ai/mcpb 2.1.2 validator passed",
+    "claudeCodeManifest": "local claude plugin validate --strict passed",
+    "scope": "isolated raw MCP startup on macOS Node22; host installation and usability remain pending"
+  },
+  "syntheticBenchmark": {
+    "urls": 100000,
+    "findings": 2000,
+    "htmlBytes": 2738382,
+    "renderMs": 459.3,
+    "filterP95Ms": 0.036,
+    "selectedRowLookupP95Ms": 0.055,
+    "observedRssMiB": 440.1,
+    "measurementScope": "Node generation and in-memory filtering/indexed lookup; browser load and interaction require separate verification."
+  },
+  "remainingValidation": [
+    "licensed Windows native integration",
+    "independently verified applied native preset settings",
+    "native analysis readiness for dependent checks",
+    "manual offline browser interaction",
+    "all six assistant and operating-system installation/usability journeys"
+  ],
+  "validatedRelease": "blocked pending release validation",
+  "marketplaceSubmissions": "not performed"
+}

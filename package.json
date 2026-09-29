@@ -1,0 +1,37 @@
+{
+  "name": "@jestats/screamingfrog-audit",
+  "version": "0.1.0",
+  "description": "Provisional JEStats local Screaming Frog technical SEO audits, evidence-backed priorities, and offline HTML/CSV reports.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "bin": { "jestats-screamingfrog": "dist/cli.js" },
+  "files": ["dist", "presets", "docs", "skills", "assets", "sample", "README.md", "LICENSE"],
+  "repository": { "type": "git", "url": "https://github.com/jestatsio/screamingfrog-plugin.git" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "pretest": "npm run build",
+    "check": "npm run typecheck && npm test",
+    "probe:native": "tsx scripts/probe-native.ts",
+    "verify:native": "tsx scripts/verify-native.ts",
+    "sample": "tsx scripts/sample-report.ts",
+    "benchmark": "tsx scripts/report-benchmark.ts",
+    "package:plugins": "npm run build && npm run sample && node scripts/package-plugins.mjs",
+    "test:mcp": "vitest run tests/server.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/server": "2.2.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "fflate": "0.8.3",
+    "@types/node": "22.19.11",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
+}

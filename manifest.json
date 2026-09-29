@@ -1,0 +1,57 @@
+{
+  "manifest_version": "0.3",
+  "name": "jestats-screamingfrog-audit",
+  "display_name": "JEStats Screaming Frog Audit",
+  "version": "0.1.0",
+  "description": "Technical SEO audits, evidence-backed priorities, and interactive offline reports from local Screaming Frog crawls.",
+  "long_description": "Connects to the visible, licensed Screaming Frog SEO Spider through localhost MCP. Nine tools manage local audit jobs, immutable snapshots, findings, and HTML/CSV reports. Controlled macOS pipeline, new/saved findings equivalence, and actual MCP report generation passed. Version 0.1.0 remains provisional while analysis readiness, applied preset settings, Windows native checks, offline browser checks, and assistant-host installation journeys are verified. New crawls default to a genuine macOS 24.3 native preset, with advanced configPath or explicit current-settings overrides available.",
+  "author": { "name": "JEStats", "url": "https://github.com/jestatsio" },
+  "repository": { "type": "git", "url": "https://github.com/jestatsio/screamingfrog-plugin.git" },
+  "homepage": "https://github.com/jestatsio/screamingfrog-plugin",
+  "support": "https://github.com/jestatsio/screamingfrog-plugin/issues",
+  "license": "MIT",
+  "keywords": ["seo", "screaming-frog", "audit", "reports"],
+  "compatibility": {
+    "platforms": ["darwin", "win32"],
+    "runtimes": { "node": ">=20.0.0" }
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/cli.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/cli.js"],
+      "env": {
+        "SCREAMINGFROG_MCP_URL": "${user_config.endpoint}",
+        "JESTATS_AUDIT_DATA_DIR": "${user_config.data_dir}"
+      }
+    }
+  },
+  "user_config": {
+    "endpoint": {
+      "type": "string",
+      "title": "Screaming Frog MCP URL",
+      "description": "The localhost MCP URL shown by your running Screaming Frog application.",
+      "default": "http://127.0.0.1:11435/mcp",
+      "required": true
+    },
+    "data_dir": {
+      "type": "directory",
+      "title": "Local audit storage",
+      "description": "Directory for audit jobs, immutable snapshots, and reports.",
+      "default": "${HOME}/.jestats/screamingfrog",
+      "required": true
+    }
+  },
+  "tools": [
+    { "name": "connection_status", "description": "Diagnose local connectivity, native capabilities, crawl identity, and readiness." },
+    { "name": "list_crawls", "description": "List saved native database crawls without loading them." },
+    { "name": "start_audit", "description": "Queue an audit from a saved crawl ID or a configured new crawl." },
+    { "name": "list_audits", "description": "Find persisted local audit jobs after reconnecting." },
+    { "name": "audit_status", "description": "Reconcile and advance an audit job, reporting coverage and required actions." },
+    { "name": "control_audit", "description": "Pause, resume, or cancel an identified audit." },
+    { "name": "list_findings", "description": "Query bounded findings by category, priority, and site section." },
+    { "name": "finding_details", "description": "Inspect a finding and paginated affected URLs with supporting evidence." },
+    { "name": "render_report", "description": "Write a local offline HTML report and CSV exports with advisory narrative." }
+  ]
+}
