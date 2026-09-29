@@ -128,7 +128,7 @@ describe('prebuilt installable plugin packages', () => {
     expect(original[25]).toBe(6); // RGBA supports an alpha channel; transparency is checked when selecting the artwork.
     for (const [kind, entries] of archives) {
       const prefix = kind === 'marketplace' ? pluginPrefix : '';
-      expect(Buffer.from(entries[`${prefix}${iconPath}`]!)).toEqual(original);
+      expect(Buffer.from(entries[`${prefix}${iconPath}`]!).equals(original)).toBe(true);
       if (kind === 'claude-desktop') {
         const manifest = JSON.parse(strFromU8(entries['manifest.json']!));
         expect(manifest.icon).toBe(iconPath);
