@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="222" height="52" viewBox="0 0 222 52" role="img" aria-labelledby="title desc">
   <title id="title">Install in Claude Code</title>
   <desc id="desc">Open the JEStats installation guide for the Claude Code development preview.</desc>
-  <rect x=".5" y=".5" width="221" height="51" rx="10" fill="#102a31" stroke="#39e7be"/>
-  <g fill="none" stroke="#39e7be" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="15" width="26" height="22" rx="3"/><path d="M21 21L26 26L21 31M30 31H35"/></g>
-  <g fill="#effbf7" font-family="Arial, Helvetica, sans-serif"><text x="53" y="23" font-size="10" font-weight="700" letter-spacing=".7">INSTALL IN</text><text x="53" y="39" font-size="15" font-weight="700">Claude Code</text></g>
-  <path d="M196 31L205 22M197 22H205V30" fill="none" stroke="#39e7be" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x=".5" y=".5" width="221" height="51" rx="10" fill="#111827" stroke="#FFAD82"/>
+  <g fill="none" stroke="#FFAD82" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="15" width="26" height="22" rx="3"/><path d="M21 21L26 26L21 31M30 31H35"/></g>
+  <g fill="#FAF9F5" font-family="Arial, Helvetica, sans-serif"><text x="53" y="23" font-size="10" font-weight="700" letter-spacing=".7">INSTALL IN</text><text x="53" y="39" font-size="15" font-weight="700">Claude Code</text></g>
+  <path d="M196 31L205 22M197 22H205V30" fill="none" stroke="#FFAD82" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

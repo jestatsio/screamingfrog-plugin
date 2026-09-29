@@ -42747,7 +42747,7 @@ function toError(value2) {
 // src/types.ts
 var MAX_URLS = 1e5;
 var MAX_DATASET_BYTES = 128 * 1024 * 1024;
-var VERSION = "0.1.1";
+var VERSION = "0.1.2";
 
 // src/native.ts
 import { setTimeout as delay } from "node:timers/promises";

@@ -1,0 +1,40 @@
+{
+  "pluginVersion": "0.1.2",
+  "recordedAt": "2026-09-29",
+  "status": "development preview; not a validated release",
+  "feature": "Original JEStats frog-auditor branding and bundled assistant install/composer icons",
+  "asset": {
+    "path": "assets/frog-auditor.png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 976556,
+    "sha256": "a024f9ed4c76c7f71976b9c1d58f88d9055b60200f69724c7a6537b7a6431086",
+    "format": "PNG RGBA",
+    "transparentCornerAlpha": 0,
+    "generation": "built-in image_gen; original artwork copied without editing"
+  },
+  "checks": {
+    "typecheckAndBuild": "passed locally",
+    "unitTests": {
+      "passed": 213,
+      "files": 9
+    },
+    "packagingTests": {
+      "passed": 4,
+      "files": 1
+    },
+    "packageIconEvidence": "PNG format and dimensions, original asset bytes in all four archives, supported MCPB/Codex image references resolving inside each package",
+    "hostSchemaEvidence": "MCPB schema and Codex interface fields verified against official docs and installed local schema; actual visual installation check pending"
+  },
+  "previousEvidence": [
+    "validation-0.1.1.json",
+    "validation-2026-09-29.json"
+  ],
+  "releaseGates": [
+    "Licensed Windows native integration",
+    "Complete assistant/OS installation and audit journeys",
+    "Applied preset settings and analysis readiness",
+    "Manual offline report/browser interaction"
+  ],
+  "hostIconVisualCheck": "pending; package asset validation does not establish visible rendering in each installed host"
+}
