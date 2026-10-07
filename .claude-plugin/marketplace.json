@@ -20,12 +20,12 @@
     },
     {
       "name": "codebase-mentor",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "description": "Understand unfamiliar code, plan changes, and maintain onboarding docs with source-backed guidance.",
       "source": {
         "source": "archive",
-        "url": "https://github.com/jestatsio/codebase-mentor/releases/download/v1.2.1/codebase-mentor-1.2.1.zip",
-        "sha256": "b60281f1dd7af46248cfe31494713df359ac610a0eaaab88f796d9af49494510"
+        "url": "https://github.com/jestatsio/codebase-mentor/releases/download/v1.2.2/codebase-mentor-1.2.2.zip",
+        "sha256": "3ee330e7419ac89da7d9e2cfd4f282095916b7f1982b209d506b9c63db078a93"
       }
     }
   ]
