@@ -56,6 +56,8 @@ The report includes an executive overview, category charts, prioritized fixes, f
 
 ## Get started
 
+This repository also hosts **JEStats Plugins**, the shared Claude Code and Codex marketplace. It includes [Codebase Mentor](https://github.com/jestatsio/codebase-mentor), a skills-only plugin for understanding unfamiliar code and maintaining onboarding docs. Follow its [installation guide](https://github.com/jestatsio/codebase-mentor/blob/main/docs/INSTALL.md) to install `codebase-mentor@jestats-plugins`.
+
 ### 1. Prepare Screaming Frog
 
 Open a **licensed Screaming Frog SEO Spider** with native MCP support, use **database storage mode**, and enable MCP under **File → Settings → MCP Server**. Keep the application running and visible. The usual endpoint is `http://127.0.0.1:11435/mcp`.
