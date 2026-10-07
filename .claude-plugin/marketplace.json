@@ -5,7 +5,7 @@
     "url": "https://github.com/jestatsio"
   },
   "metadata": {
-    "description": "JEStats community plugins: prebuilt development previews for local Screaming Frog audits."
+    "description": "JEStats plugins for source-grounded codebase guidance and local Screaming Frog audits."
   },
   "plugins": [
     {
@@ -16,6 +16,16 @@
         "source": "archive",
         "url": "https://github.com/jestatsio/screamingfrog-plugin/releases/download/v0.1.2-preview.1/jestats-screamingfrog-audit-0.1.2-20260929T230650117Z-4dd532af-claude-code.zip",
         "sha256": "70ff69e073fae1dbef523248f75d305e869a344c065a1dddf045c1d11f6d4bcf"
+      }
+    },
+    {
+      "name": "codebase-mentor",
+      "version": "1.2.1",
+      "description": "Understand unfamiliar code, plan changes, and maintain onboarding docs with source-backed guidance.",
+      "source": {
+        "source": "archive",
+        "url": "https://github.com/jestatsio/codebase-mentor/releases/download/v1.2.1/codebase-mentor-1.2.1.zip",
+        "sha256": "b60281f1dd7af46248cfe31494713df359ac610a0eaaab88f796d9af49494510"
       }
     }
   ]

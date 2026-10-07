@@ -17,6 +17,19 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "codebase-mentor",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/jestatsio/codebase-mentor.git",
+        "sha": "7a226231c70cbe1351aed6fed91b20c5facb3cee"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Developer Tools"
     }
   ]
 }
