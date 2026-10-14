@@ -1,6 +1,8 @@
 name: Publish installation page
 
 on:
+  pull_request:
+    paths: ["site/**", "assets/frog-auditor.png", ".github/workflows/pages.yml"]
   push:
     branches: [main]
     paths: ["site/**", "assets/frog-auditor.png", ".github/workflows/pages.yml"]
@@ -18,15 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
       - name: Include the original plugin logo
         run: |
           mkdir -p site/assets
           cp assets/frog-auditor.png site/assets/frog-auditor.png
       - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
         with:
           path: site
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
