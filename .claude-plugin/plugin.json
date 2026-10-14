@@ -3,9 +3,20 @@
   "displayName": "JEStats Screaming Frog Audit",
   "version": "0.1.2",
   "description": "Provisional local technical SEO auditing, evidence-backed action plans, and offline HTML/CSV reports from Screaming Frog crawls.",
-  "author": { "name": "JEStats", "url": "https://github.com/jestatsio" },
+  "author": {
+    "name": "JEStats",
+    "url": "https://github.com/jestatsio"
+  },
   "homepage": "https://github.com/jestatsio/screamingfrog-plugin",
   "repository": "https://github.com/jestatsio/screamingfrog-plugin",
   "license": "MIT",
-  "keywords": ["seo", "screaming-frog", "audits", "mcp"]
+  "keywords": [
+    "seo",
+    "screaming-frog",
+    "audits",
+    "mcp"
+  ],
+  "icon": "./assets/frog-auditor.png",
+  "documentationUrl": "https://jestatsio.github.io/screamingfrog-plugin/",
+  "supportUrl": "https://github.com/jestatsio/screamingfrog-plugin/issues"
 }
